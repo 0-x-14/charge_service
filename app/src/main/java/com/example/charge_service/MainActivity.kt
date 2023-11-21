@@ -9,7 +9,7 @@ import com.example.charge_service.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view1)
+        setContentView(R.layout.rental_fee_5)
 
     }
 }

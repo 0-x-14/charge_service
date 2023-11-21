@@ -14,4 +14,7 @@
     <string name="user_condition6">5. 서비스 이용은 평일 9~22시에만 가능하며, 20시 이후에 대여할 경우에도 대여 시간과 관계없이 반납 시간은 22시입니다.</string>
     <string name="user_condition7">6. 충전기를 고의적으로 파손하거나 절도할 경우, 발생하는 비용에 대해 전액 변상해야 합니다.</string>
     <string name="user_condition8">본 이용자는 위 사항을 모두 숙지하였으며, 약관에 따라 이용 도중 불이익이 발생할 수 있음을 동의합니다.</string>
+    <string name="start_time">2023.11.08 12:00</string>
+    <string name="end_time">~2023.11.08 15:23</string>
+    <string name="time_over">203분(3시간 23분)</string>
 </resources>
