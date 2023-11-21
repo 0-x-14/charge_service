@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">charge_service</string>
+    <string name="login_mention">숙명포털 아이디로 로그인하세요.</string>
+    <string name="id">아이디를 입력하세요.</string>
+    <string name="pwd">비밀번호를 입력하세요.</string>
+    <string name="user_condition1">충전하겠숙?은 원활한 서비스 제공을 위해 다음 약관에 동의하는 경우에만 이용이 가능합니다.</string>
+    <string name="user_condition2">1. 충전기는 종류에 상관없이 하루 1번만 대여 가능하며, 최대 2시간까지만 이용 가능합니다.</string>
+    <string name="user_condition3">2. 반납 시간을 초과할 경우, 1시간당 100원의 추가 비용이 발생합니다.</string>
+    <string name="user_condition4">3. 추가 비용을 결제하지 않을 경우, 추후 서비스 이용이 불가능합니다.</string>
+    <string name="user_condition5">4. 반납 시간을 초과한 경우 경고가 1회 부여되며 경고는 누적될 경우, 다음과 같은 제재가 가해집니다.</string>
+    <string name="condition5_a">a. 3회 경고 - 7일 간 대여 정지</string>
+    <string name="condition5_b">b. 5회 경고 - 14일 간 대여 정지</string>
+    <string name="condition5_c">c. 7회 경고 - 한 달 간 대여 정지</string>
+    <string name="user_condition6">5. 서비스 이용은 평일 9~22시에만 가능하며, 20시 이후에 대여할 경우에도 대여 시간과 관계없이 반납 시간은 22시입니다.</string>
+    <string name="user_condition7">6. 충전기를 고의적으로 파손하거나 절도할 경우, 발생하는 비용에 대해 전액 변상해야 합니다.</string>
+    <string name="user_condition8">본 이용자는 위 사항을 모두 숙지하였으며, 약관에 따라 이용 도중 불이익이 발생할 수 있음을 동의합니다.</string>
 </resources>
