@@ -92,10 +92,11 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
                     for (location in it.locations) {
                         Log.d("jupy", "현재 위치 위도 ${location.latitude} 경도 ${location.longitude}")
                         setLastLocation(location.latitude, location.longitude)
+                        // 위치정보 불러온 뒤 setLastLocation 호출
+                        // 1초마다 주기적으로 업데이트됨
                     }
                 }
             }
-            // 1초마다 위치정보를 불러옴
         }
         // fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
         // 현재 권한 설정과 연동되지 않아서 오류 발생
@@ -113,6 +114,6 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
         gMap.addMarker(makerOptions)
         gMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
-        // 현재 위치를 표시하는 함수
+        // 현재 위치 표시
     }
 }
