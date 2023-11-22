@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_using_layout" >
+    android:id="@+id/home_using_layout">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -87,11 +87,11 @@
                 android:textSize="26dp"
                 android:layout_marginTop="7dp"/>
 
-            <ImageView
-                android:id="@+id/map_api"
+            <fragment
+                android:id="@+id/mapView"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/map"
                 android:layout_marginTop="25dp" />
 
             <TextView
