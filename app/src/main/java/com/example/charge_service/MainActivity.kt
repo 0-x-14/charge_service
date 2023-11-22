@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view1)
+        setContentView(R.layout.login)
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
