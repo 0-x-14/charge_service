@@ -104,7 +104,6 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
             requestLocationPermission()
         }
     }
-
     private fun requestLocationPermission() {
         locationPermission.launch(
             arrayOf(
@@ -113,8 +112,6 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
             )
         )
     }
-
-
     fun setLastLocation(latitude:Double, longitude:Double) {
         val LATLNG = LatLng(latitude, longitude)
 
