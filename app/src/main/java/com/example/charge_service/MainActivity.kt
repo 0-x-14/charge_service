@@ -1,7 +1,9 @@
 package com.example.charge_service
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -11,7 +13,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_using)
+        setContentView(R.layout.rental)
+
+            val btnScan: Button = findViewById(R.id.rental_button)
+            btnScan.setOnClickListener {
+                // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+                val intent = Intent(this@MainActivity,ScanQRActivity::class.java)
+                startActivity(intent) // ScanQRActivity 시작
+            }
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
