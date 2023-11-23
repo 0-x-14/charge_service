@@ -2,6 +2,7 @@ package com.example.charge_service
 
 import android.Manifest
 import android.app.Activity
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -34,13 +36,6 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
 
     lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var locationCallback: LocationCallback
-
-
-//    private val callback = OnMapReadyCallback { googleMap ->
-//                val sydney = LatLng(-34.0, 151.0)
-//        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,27 +76,44 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
     }
 
     fun updateLocation() {
-        val locationRequest = LocationRequest.create().apply {
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            interval = 1000
-        }
+        // 필요한 위치 권한이 부여되었는지 확인
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            val locationRequest = LocationRequest.create().apply {
+                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+                interval = 1000
+            }
 
-        locationCallback = object: LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                locationResult?.let {
-                    for (location in it.locations) {
-                        Log.d("jupy", "현재 위치 위도 ${location.latitude} 경도 ${location.longitude}")
-                        setLastLocation(location.latitude, location.longitude)
-                        // 위치정보 불러온 뒤 setLastLocation 호출
-                        // 1초마다 주기적으로 업데이트됨
+            locationCallback = object : LocationCallback() {
+                override fun onLocationResult(locationResult: LocationResult?) {
+                    locationResult?.let {
+                        for (location in it.locations) {
+                            Log.d("jupy", "현재 위치 위도 ${location.latitude} 경도 ${location.longitude}")
+                            setLastLocation(location.latitude, location.longitude)
+                            // 로그창에 위도 및 경도 출력, setLastLocation 호출로 최신 위치 갱신
+                        }
                     }
                 }
             }
+            fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
+        } else {
+            // 권한이 없는 경우 사용자에게 권한을 요청
+            requestLocationPermission()
         }
-        // fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
-        // 현재 권한 설정과 연동되지 않아서 오류 발생
-        // 권한 허용 정보를 받아오면 정상적으로 실행될 듯
     }
+
+    private fun requestLocationPermission() {
+        locationPermission.launch(
+            arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        )
+    }
+
 
     fun setLastLocation(latitude:Double, longitude:Double) {
         val LATLNG = LatLng(latitude, longitude)
