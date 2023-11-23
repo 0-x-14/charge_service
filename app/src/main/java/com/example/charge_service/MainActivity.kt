@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             val btnScan: Button = findViewById(R.id.rental_button)
             btnScan.setOnClickListener {
                 // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-                val intent = Intent(this@MainActivity,ScanQRActivity::class.java)
+                val intent = Intent(this@MainActivity, QRScanActivity::class.java)
                 startActivity(intent) // ScanQRActivity 시작
             }
 
