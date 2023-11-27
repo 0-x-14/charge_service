@@ -111,13 +111,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/num_of_eight_pin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/numOfEightPin"
+                android:layout_width="50dp"
+                android:layout_height="35dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="5개"
                 android:textSize="20sp" />
 
             <ImageView
@@ -201,7 +200,7 @@
             android:elevation="15dp"/>
 
         <Button
-            android:id="@+id/rental_button"
+            android:id="@+id/rentalButton"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginTop="24dp"

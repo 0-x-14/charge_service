@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rental)
 
-            val btnScan: Button = findViewById(R.id.rental_button)
+            val btnScan: Button = findViewById(R.id.rentalButton)
             btnScan.setOnClickListener {
                 // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
                 val intent = Intent(this@MainActivity, QRScanActivity::class.java)
