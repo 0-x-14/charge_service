@@ -1,41 +1,25 @@
 package com.example.charge_service
-
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
-    private val PERMISSION_REQUEST_CODE = 1000 // 권한 요청 코드
+    // private val PERMISSION_REQUEST_CODE = 1000 // 권한 요청 코드
+    companion object {
+        const val PERMISSION_REQUEST_CODE = 1000
+    }
     private var isPermissionsRequested = false // 권한 요청 여부를 나타내는 변수
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.rental)
-        val btnScan1: Button = findViewById(R.id.rentalButton1)
-        btnScan1.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
+        setContentView(R.layout.home_using)
 
-
-        val btnScan2: Button = findViewById(R.id.rentalButton2)
-        btnScan2.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
+        // home_using_layout과 Fragment 연결
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().replace(R.id.home_using_layout, MapsFragment(this)).commit()
         }
-        val btnScan3: Button = findViewById(R.id.rentalButton3)
-        btnScan3.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
-
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
