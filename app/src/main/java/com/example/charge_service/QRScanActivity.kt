@@ -29,7 +29,14 @@ class QRScanActivity : AppCompatActivity() {
 
         urls = arrayOf(
             "https://m.site.naver.com/1geRx",
-            // Add other URLs as needed
+            "https://m.site.naver.com/1geRp",
+            "https://m.site.naver.com/1geRj",
+            "https://m.site.naver.com/1geRa",
+            "https://m.site.naver.com/1geR5",
+            "https://m.site.naver.com/1geQZ",
+            "https://m.site.naver.com/1geQV",
+            "https://m.site.naver.com/1geQL",
+            "https://m.site.naver.com/1geQD"
         )
 
         binding.rentalButton.setOnClickListener {
