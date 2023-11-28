@@ -1,4 +1,5 @@
 package com.example.charge_service
+
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -14,13 +15,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rental)
+        val btnScan1: Button = findViewById(R.id.rentalButton1)
+        btnScan1.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
 
-            val btnScan: Button = findViewById(R.id.rentalButton)
-            btnScan.setOnClickListener {
-                // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-                val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-                startActivity(intent) // ScanQRActivity 시작
-            }
+
+        val btnScan2: Button = findViewById(R.id.rentalButton2)
+        btnScan2.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+        val btnScan3: Button = findViewById(R.id.rentalButton3)
+        btnScan3.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
