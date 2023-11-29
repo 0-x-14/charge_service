@@ -4,36 +4,27 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.charge_service.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 1000 // 권한 요청 코드
     private var isPermissionsRequested = false // 권한 요청 여부를 나타내는 변수
 
+    val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.rental)
-        val btnScan1: Button = findViewById(R.id.rentalButton1)
-        btnScan1.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
+        setContentView(R.layout.login)
 
-
-        val btnScan2: Button = findViewById(R.id.rentalButton2)
-        btnScan2.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
-        val btnScan3: Button = findViewById(R.id.rentalButton3)
-        btnScan3.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(this@MainActivity, QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
+        // login 버튼을 누르면 home으로 이동
+        val loginBtn: Button = findViewById(R.id.login_button)
+        loginBtn.setOnClickListener {
+            val intent = Intent( this@MainActivity, HomeActivity::class.java)
+            Log.d("jupy", "num.1")
+            startActivity(intent)
         }
 
 
