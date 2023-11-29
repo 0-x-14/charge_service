@@ -1,59 +1,49 @@
 package com.example.charge_service
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ReturnFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReturnFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.return_page, container, false)
+        // 기본 화면 세팅
+        val view = inflater.inflate(R.layout.return_page, container, false)
+
+        // 각 버튼 클릭시 QR코드 스캔으로 넘어감
+        val btnScan1: Button = view.findViewById(R.id.returnButton1)
+        btnScan1.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+
+        val btnScan2: Button = view.findViewById(R.id.returnButton2)
+        btnScan2.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+
+        val btnScan3: Button = view.findViewById(R.id.returnButton3)
+        btnScan3.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReturnFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReturnFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import android.util.Log
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
-import androidx.navigation.ui.setupWithNavController
+//import androidx.navigation.NavController
+//import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity: AppCompatActivity() {
