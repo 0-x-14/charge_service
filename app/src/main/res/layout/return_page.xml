@@ -102,7 +102,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/rentalButton1"
+            android:id="@+id/returnButton1"
             android:layout_width="111dp"
             android:layout_height="35dp"
             android:layout_row="0"
@@ -133,7 +133,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/rentalButton2"
+            android:id="@+id/returnButton2"
             android:layout_width="111dp"
             android:layout_height="35dp"
             android:layout_row="1"
@@ -165,7 +165,7 @@
 
 
         <Button
-            android:id="@+id/rentalButton3"
+            android:id="@+id/returnButton3"
             android:layout_width="111dp"
             android:layout_height="35dp"
             android:layout_row="2"
