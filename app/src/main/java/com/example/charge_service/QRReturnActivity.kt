@@ -34,7 +34,6 @@ class QRReturnActivity : AppCompatActivity() {
         val integrator = IntentIntegrator(this)
         integrator.setOrientationLocked(false)
         integrator.initiateScan()
-        // buttonId에 따른 추가적인 처리를 할 수 있도록 구현
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -56,12 +55,13 @@ class QRReturnActivity : AppCompatActivity() {
                 } else {
                     // 각 버튼에 따른 성공 처리
                     when (requestCode) {
-                        1 -> { /* 버튼 1에 대한 성공 처리 */ }
-                        2 -> { /* 버튼 2에 대한 성공 처리 */ }
-                        3 -> { /* 버튼 3에 대한 성공 처리 */ }
+
+                        1 -> {  Toast.makeText(this, "8핀 충전기 반납이 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        2 -> { Toast.makeText(this, "C타입 충전기 반납이 완료되었습니다.",Toast.LENGTH_LONG).show() }
+                        3 -> { Toast.makeText(this, "노트북 충전기 반납이 완료되었습니다.", Toast.LENGTH_LONG).show() }
                     }
                     // 처리가 성공했다는 토스트 메시지를 띄웁니다.
-                    Toast.makeText(this, "충전기가 반납되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "충전기 반납이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                     supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, ReturnCompFragment)
                     // 반납이 성공할 경우 반납 완료 화면으로 이동함
                 }

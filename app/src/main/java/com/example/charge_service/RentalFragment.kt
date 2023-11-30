@@ -1,62 +1,49 @@
-package com.example.charge_service
-
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
-import androidx.core.view.GravityCompat
-import com.example.charge_service.databinding.RentalBinding
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.fragment.app.Fragment
+import com.example.charge_service.QRScanActivity
+import com.example.charge_service.R
 
 class RentalFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 기본 화면 세팅
+        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.rental, container, false)
 
-        // 각 버튼 클릭시 QR코드 스캔으로 넘어감
+        // Button 1 Click Listener
         val btnScan1: Button = view.findViewById(R.id.rentalButton1)
         btnScan1.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
+            startQRScannerForType("8핀", 1)
         }
 
+        // Button 2 Click Listener
         val btnScan2: Button = view.findViewById(R.id.rentalButton2)
         btnScan2.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
+            startQRScannerForType("C타입", 2)
         }
 
+        // Button 3 Click Listener
         val btnScan3: Button = view.findViewById(R.id.rentalButton3)
         btnScan3.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRScanActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
+            startQRScannerForType("노트", 3)
         }
-        val rental = RentalBinding.inflate(layoutInflater)
-        val menuBtn = view.findViewById<ImageView>(R.id.menu_btn)
-        menuBtn.setOnClickListener{
-            rental.homeLayout.openDrawer(GravityCompat.END)
-        }
-
-        val alarm = view.findViewById<ImageView>(R.id.alarm_btn)
-        alarm.setOnClickListener{
-
-        }
-
 
         return view
     }
+
+    private fun startQRScannerForType(type: String, requestCode: Int) {
+        val intent = Intent(activity, QRScanActivity::class.java)
+        intent.putExtra("TYPE", type)
+        startActivityForResult(intent, requestCode)
+    }
+
+    // Add onActivityResult here if needed
 }

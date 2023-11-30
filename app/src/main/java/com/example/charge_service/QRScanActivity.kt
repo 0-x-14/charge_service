@@ -19,7 +19,7 @@ class QRScanActivity : AppCompatActivity() {
     private lateinit var urls2: Array<String>
     private lateinit var urls3: Array<String>
     private lateinit var binding: RentalBinding // 변경된 부분
-    private val RentalCompFragment by lazy {RentalCompFragment()}
+    private val RentalCompFragment by lazy { RentalCompFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,12 @@ class QRScanActivity : AppCompatActivity() {
             "https://m.site.naver.com/1geRp",
             "https://m.site.naver.com/1geRj",
         )
-        urls2= arrayOf(
+        urls2 = arrayOf(
             "https://m.site.naver.com/1geRa",
             "https://m.site.naver.com/1geR5",
             "https://m.site.naver.com/1geQZ",
         )
-        urls3= arrayOf(
+        urls3 = arrayOf(
             "https://m.site.naver.com/1geQV",
             "https://m.site.naver.com/1geQL",
             "https://m.site.naver.com/1geQD"
@@ -53,7 +53,7 @@ class QRScanActivity : AppCompatActivity() {
         binding.rentalButton1.setOnClickListener {
             if (num1 > 0) {
                 num1 -= 1
-                output_text1.text = num1.toString()
+                binding.numOfEightPin.text = num1.toString()
                 startQRScanner()
             } else {
                 Toast.makeText(
@@ -66,7 +66,7 @@ class QRScanActivity : AppCompatActivity() {
         binding.rentalButton2.setOnClickListener {
             if (num2 > 0) {
                 num2 -= 1
-                output_text2.text = num2.toString()
+                binding.numOfCtype.text = num2.toString()
                 startQRScanner()
             } else {
                 Toast.makeText(
@@ -79,7 +79,7 @@ class QRScanActivity : AppCompatActivity() {
         binding.rentalButton3.setOnClickListener {
             if (num3 > 0) {
                 num3 -= 1
-                output_text3.text = num3.toString()
+                binding.numOfnote.text = num3.toString()
                 startQRScanner()
             } else {
                 Toast.makeText(
@@ -92,7 +92,7 @@ class QRScanActivity : AppCompatActivity() {
 
 
         startQRScanner()
-        saveCurrentTimeToFirebase()
+        //saveCurrentTimeToFirebase()
     }
 
     private fun startQRScanner() {
@@ -113,11 +113,6 @@ class QRScanActivity : AppCompatActivity() {
                 val scannedUrl = result1.contents
                 Toast.makeText(this, "8핀 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
 
-                if (urls1.contains(scannedUrl)) {
-                    decreaseRentCount(scannedUrl)
-                } else {
-                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
-                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -132,11 +127,6 @@ class QRScanActivity : AppCompatActivity() {
                 val scannedUrl = result2.contents
                 Toast.makeText(this, "C타입 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
 
-                if (urls2.contains(scannedUrl)) {
-                    decreaseRentCount(scannedUrl)
-                } else {
-                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
-                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -149,73 +139,9 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 val scannedUrl = result3.contents
                 Toast.makeText(this, "노트북 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
-
-                if (urls3.contains(scannedUrl)) {
-                    decreaseRentCount(scannedUrl)
-                } else {
-                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
-                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
-    }
-
-    private fun decreaseRentCount(url: String) {
-        val timeRef = database.getReference("urls").child(url).child("count")
-
-
-        timeRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val currentCount = dataSnapshot.getValue(Int::class.java) ?: 0
-
-                if (currentCount > 0) {
-                    val updatedCount = currentCount - 1
-                    timeRef.setValue(updatedCount)
-                    Toast.makeText(
-                        this@QRScanActivity,
-                        "해당 URL의 대여 개수가 줄었습니다.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    binding.numOfEightPin.text = updatedCount.toString()
-                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment())
-                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
-                } else {
-                    Toast.makeText(
-                        this@QRScanActivity,
-                        "더 이상 대여 가능한 개수가 없습니다.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(
-                    this@QRScanActivity,
-                    "데이터베이스 에러: ${databaseError.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-    }
-
-    private fun saveCurrentTimeToFirebase() {
-        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
-        val timeRef = database.getReference("current_time")
-        timeRef.setValue(currentTime)
-            .addOnSuccessListener {
-                Toast.makeText(
-                    this@QRScanActivity,
-                    "현재 시간이 성공적으로 저장되었습니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(
-                    this@QRScanActivity,
-                    "시간을 저장하는 데 실패했습니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
     }
 }
