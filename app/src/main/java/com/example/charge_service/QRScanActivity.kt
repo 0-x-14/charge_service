@@ -113,6 +113,16 @@ class QRScanActivity : AppCompatActivity() {
                 val scannedUrl = result1.contents
                 Toast.makeText(this, "8핀 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
 
+<<<<<<< HEAD
+=======
+                if (urls1.contains(scannedUrl)) {
+                    decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
+                } else {
+                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+>>>>>>> 7945d89 (주영 화면전환 구현 -3)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -127,6 +137,16 @@ class QRScanActivity : AppCompatActivity() {
                 val scannedUrl = result2.contents
                 Toast.makeText(this, "C타입 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
 
+<<<<<<< HEAD
+=======
+                if (urls2.contains(scannedUrl)) {
+                    decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
+                } else {
+                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+>>>>>>> 7945d89 (주영 화면전환 구현 -3)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -139,9 +159,79 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 val scannedUrl = result3.contents
                 Toast.makeText(this, "노트북 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
+<<<<<<< HEAD
+=======
+
+                if (urls3.contains(scannedUrl)) {
+                    decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
+                } else {
+                    Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+>>>>>>> 7945d89 (주영 화면전환 구현 -3)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+<<<<<<< HEAD
+=======
+
+    private fun decreaseRentCount(url: String) {
+        val timeRef = database.getReference("urls").child(url).child("count")
+
+
+        timeRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentCount = dataSnapshot.getValue(Int::class.java) ?: 0
+
+                if (currentCount > 0) {
+                    val updatedCount = currentCount - 1
+                    timeRef.setValue(updatedCount)
+                    Toast.makeText(
+                        this@QRScanActivity,
+                        "해당 URL의 대여 개수가 줄었습니다.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    binding.numOfEightPin.text = updatedCount.toString()
+                } else {
+                    Toast.makeText(
+                        this@QRScanActivity,
+                        "더 이상 대여 가능한 개수가 없습니다.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(
+                    this@QRScanActivity,
+                    "데이터베이스 에러: ${databaseError.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    private fun saveCurrentTimeToFirebase() {
+        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val timeRef = database.getReference("current_time")
+        timeRef.setValue(currentTime)
+            .addOnSuccessListener {
+                Toast.makeText(
+                    this@QRScanActivity,
+                    "현재 시간이 성공적으로 저장되었습니다.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(
+                    this@QRScanActivity,
+                    "시간을 저장하는 데 실패했습니다.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+>>>>>>> 7945d89 (주영 화면전환 구현 -3)
 }
