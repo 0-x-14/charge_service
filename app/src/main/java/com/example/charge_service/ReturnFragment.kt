@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.GravityCompat
@@ -26,6 +27,20 @@ class ReturnFragment : Fragment() {
             //param1 = it.getString(ARG_PARAM1)
             //param2 = it.getString(ARG_PARAM2)
         }
+=======
+import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.findNavController
+import com.example.charge_service.MainActivity.Companion.preferences
+import com.example.charge_service.databinding.ReturnCompBinding
+import com.example.charge_service.databinding.ReturnPageBinding
+import android.widget.Button
+
+
+class ReturnFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+>>>>>>> f59e417 (주영 타이머 구현 -1 (미완성))
         // return page에 대한 xml
         val binding = ReturnPageBinding.inflate(layoutInflater)
 
