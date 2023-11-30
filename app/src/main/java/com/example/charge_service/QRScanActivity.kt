@@ -115,6 +115,8 @@ class QRScanActivity : AppCompatActivity() {
 
                 if (urls1.contains(scannedUrl)) {
                     decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
                 } else {
                     Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -134,6 +136,8 @@ class QRScanActivity : AppCompatActivity() {
 
                 if (urls2.contains(scannedUrl)) {
                     decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
                 } else {
                     Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -152,6 +156,8 @@ class QRScanActivity : AppCompatActivity() {
 
                 if (urls3.contains(scannedUrl)) {
                     decreaseRentCount(scannedUrl)
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
                 } else {
                     Toast.makeText(this, "해당 URL은 대여할 수 없습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -178,8 +184,6 @@ class QRScanActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     binding.numOfEightPin.text = updatedCount.toString()
-                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment())
-                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
                 } else {
                     Toast.makeText(
                         this@QRScanActivity,
