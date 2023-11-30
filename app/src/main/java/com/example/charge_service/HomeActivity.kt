@@ -1,25 +1,8 @@
 package com.example.charge_service
 
-//import android.app.Fragment
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.charge_service.databinding.ActivityMainBinding
 import com.example.charge_service.databinding.HomeBinding
-import com.example.charge_service.databinding.LoginBinding
-//import androidx.lifecycle.LiveData
-//import android.util.Log
-//import androidx.fragment.app.FragmentManager
-//import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-//import androidx.navigation.NavController
-//import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity: AppCompatActivity() {
@@ -30,6 +13,9 @@ class HomeActivity: AppCompatActivity() {
     private val RentalConditionFragment by lazy {RentalConditionFragment()}
     private val binding by lazy { HomeBinding.inflate(layoutInflater) }
     private lateinit var preferences: PreferenceUtil
+
+    private val RentalCompFragment by lazy {RentalCompFragment()}
+    // 대여 완료 화면 확인용
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -59,7 +45,7 @@ class HomeActivity: AppCompatActivity() {
                     true
                     }
                     R.id.navi_rental -> {
-
+                        // changeFragment(RentalCompFragment)
                         changeFragment(RentalConditionFragment)
                         true
                     }
