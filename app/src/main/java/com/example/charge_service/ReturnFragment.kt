@@ -6,25 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+<<<<<<< HEAD
 import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
 import com.example.charge_service.MainActivity.Companion.preferences
-import com.example.charge_service.databinding.RentalBinding
+import com.example.charge_service.databinding.ReturnComp4Binding
 import com.example.charge_service.databinding.ReturnPageBinding
+=======
+import android.widget.Button
+>>>>>>> bd686f0bd44fcc32dfb786796d152e4888390a3b
 
 
 class ReturnFragment : Fragment() {
     // TODO: Rename and change types of parameters
+<<<<<<< HEAD
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            //param1 = it.getString(ARG_PARAM1)
-            //param2 = it.getString(ARG_PARAM2)
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
         }
         // return page에 대한 xml
         val binding = ReturnPageBinding.inflate(layoutInflater)
@@ -44,6 +48,8 @@ class ReturnFragment : Fragment() {
         }
 
     }
+=======
+>>>>>>> bd686f0bd44fcc32dfb786796d152e4888390a3b
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
