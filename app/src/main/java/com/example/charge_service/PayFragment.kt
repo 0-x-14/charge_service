@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
+import com.example.charge_service.databinding.PayBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +29,13 @@ class PayFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        val binding = PayBinding.inflate(layoutInflater)
+
+        binding.menuIcon.setOnClickListener{
+            binding.homeLayout.openDrawer(GravityCompat.END)
+        }
+
+
     }
 
     override fun onCreateView(
@@ -34,6 +43,10 @@ class PayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+//        val binding = PayBinding.inflate(layoutInflater)
+//        binding.menuIcon.setOnClickListener{
+//            binding.homeLayout.openDrawer(GravityCompat.END)
+//        }
         return inflater.inflate(R.layout.pay, container, false)
     }
 

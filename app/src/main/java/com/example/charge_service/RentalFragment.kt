@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import androidx.core.view.GravityCompat
+import com.example.charge_service.databinding.RentalBinding
 
 class RentalFragment : Fragment() {
 
@@ -41,6 +44,16 @@ class RentalFragment : Fragment() {
             // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
             val intent = Intent(getActivity(), QRScanActivity::class.java)
             startActivity(intent) // ScanQRActivity 시작
+        }
+        val rental = RentalBinding.inflate(layoutInflater)
+        val menuBtn = view.findViewById<ImageView>(R.id.menu_btn)
+        menuBtn.setOnClickListener{
+            rental.homeLayout.openDrawer(GravityCompat.END)
+        }
+
+        val alarm = view.findViewById<ImageView>(R.id.alarm_btn)
+        alarm.setOnClickListener{
+
         }
 
 
