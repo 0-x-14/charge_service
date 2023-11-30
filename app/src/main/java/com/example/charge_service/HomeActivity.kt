@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+<<<<<<< HEAD
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,10 @@ import com.example.charge_service.databinding.LoginBinding
 //import android.util.Log
 //import androidx.fragment.app.FragmentManager
 //import androidx.fragment.app.FragmentTransaction
+=======
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+>>>>>>> bd686f0bd44fcc32dfb786796d152e4888390a3b
 //import androidx.navigation.NavController
 //import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
