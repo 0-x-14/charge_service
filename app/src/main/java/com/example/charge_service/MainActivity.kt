@@ -1,31 +1,54 @@
 package com.example.charge_service
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.charge_service.databinding.ActivityMainBinding
+import com.example.charge_service.databinding.LoginBinding
 
 class MainActivity : AppCompatActivity() {
+    companion object{
+        lateinit var preferences: PreferenceUtil
+    }
+
     private val PERMISSION_REQUEST_CODE = 1000 // 권한 요청 코드
     private var isPermissionsRequested = false // 권한 요청 여부를 나타내는 변수
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
+        preferences = PreferenceUtil(applicationContext)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
         // login 버튼을 누르면 home으로 이동
         val loginBtn: Button = findViewById(R.id.login_button)
-        loginBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity, HomeActivity::class.java)
-            Log.d("jupy", "num.1")
+        // 입력한 id값이 sharedPreference에 저장
+        loginBtn.setOnClickListener{
+            val editText1 = findViewById<EditText>(R.id.editText1)
+            val id = editText1.text.toString()
+            preferences.setString("id", id)
+
+            val intent = Intent(this, HomeActivity::class.java)
+            // homeactivity였음
             startActivity(intent)
+
         }
+
+//        loginBtn.setOnClickListener {
+//            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+//            Log.d("jupy", "num.1")
+//            startActivity(intent)
+
+
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
