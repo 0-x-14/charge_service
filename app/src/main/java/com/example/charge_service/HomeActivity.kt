@@ -15,7 +15,8 @@ class HomeActivity: AppCompatActivity() {
     private lateinit var preferences: PreferenceUtil
 
     private val RentalCompFragment by lazy {RentalCompFragment()}
-    // 대여 완료 화면 확인용
+    private val ReturnCompFragment by lazy {ReturnCompFragment()}
+    // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -50,6 +51,7 @@ class HomeActivity: AppCompatActivity() {
                         true
                     }
                     R.id.navi_return -> {
+                        // changeFragment(ReturnCompFragment)
                         changeFragment(ReturnFragment)
                         true
                     }

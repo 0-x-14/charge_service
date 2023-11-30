@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import kotlin.concurrent.timer
@@ -21,8 +22,15 @@ import kotlin.concurrent.timer
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.rental_comp, container, false)
+        val view = inflater.inflate(R.layout.rental_comp, container, false)
+
+        val rental_comp_close: ImageView = view.findViewById(R.id.rental_comp_close)
+        rental_comp_close.setOnClickListener {
+            val homeActivity = requireActivity() as HomeActivity
+            homeActivity.changeFragment(HomeFragment())
+        }
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +38,7 @@ import kotlin.concurrent.timer
 
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
-        val rental_comp_close: ImageView = view.findViewById(R.id.rental_comp_close)
+        val timer_test: Button = view.findViewById(R.id.timer_test)
         // 임시로 타이머가 작동되는지 확인하기 위해 close 버튼을 눌렀을 때 타이머가 실행되도록 함
 
         var hour = 0
@@ -40,7 +48,7 @@ import kotlin.concurrent.timer
 
         time.text = String.format("%02d : %02d : %02d", hour, minute, second)
 
-        rental_comp_close.setOnClickListener{
+        timer_test.setOnClickListener{
             var timeTick = 7200
             // 2시간, 초 단위로 계산
 
