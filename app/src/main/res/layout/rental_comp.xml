@@ -102,18 +102,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/timer_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="타이머 확인용 버튼"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rental_comp_close"
-
-        android:layout_marginBottom="128dp"/>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
