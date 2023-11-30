@@ -87,6 +87,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/submission"
         android:layout_width="86dp"
         android:layout_height="38dp"
         android:layout_marginTop="20dp"

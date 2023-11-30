@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.charge_service.databinding.RentalCompBinding
 
 class ReturnCompFragment : Fragment() {
@@ -17,6 +18,17 @@ class ReturnCompFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.return_comp, container, false)
+        // 기본 화면 세팅
+        val view = inflater.inflate(R.layout.return_comp, container, false)
+
+        // submission 버튼을 누르면 파이어베이스에 저장 후 홈화면으로 이동함
+        // 파이어베이스 부분 구현 X
+        val submission: Button = view.findViewById(R.id.submission)
+
+        submission.setOnClickListener {
+            val homeActivity = requireActivity() as HomeActivity
+            homeActivity.changeFragment(HomeFragment())
+        }
+        return view
     }
 }
