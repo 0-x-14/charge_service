@@ -10,6 +10,8 @@ import com.google.zxing.integration.android.IntentIntegrator
 class QRReturnActivity : AppCompatActivity() {
     private lateinit var binding: ReturnPageBinding
 
+    private val ReturnCompFragment by lazy {ReturnCompFragment()}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ReturnPageBinding.inflate(layoutInflater)
@@ -36,6 +38,7 @@ class QRReturnActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK) {
@@ -59,10 +62,10 @@ class QRReturnActivity : AppCompatActivity() {
                     }
                     // 처리가 성공했다는 토스트 메시지를 띄웁니다.
                     Toast.makeText(this, "충전기가 반납되었습니다.", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, ReturnCompFragment)
+                    // 반납이 성공할 경우 반납 완료 화면으로 이동함
                 }
             }
         }
     }
-
-
 }

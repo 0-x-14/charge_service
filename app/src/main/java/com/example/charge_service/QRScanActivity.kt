@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.charge_service.databinding.ActivityMainBinding
 import com.example.charge_service.databinding.RentalBinding
 import com.google.firebase.database.*
 import com.google.zxing.integration.android.IntentIntegrator
@@ -22,6 +21,8 @@ class QRScanActivity : AppCompatActivity() {
     private lateinit var urls2: Array<String>
     private lateinit var urls3: Array<String>
     private lateinit var binding: RentalBinding // 변경된 부분
+    private val RentalCompFragment by lazy {RentalCompFragment()}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,7 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this@QRScanActivity,
-                    "더 이상 대여 가능한 갯수가 없습니다.",
+                    "더 이상 대여 가능한 개수가 없습니다.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -73,7 +74,7 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this@QRScanActivity,
-                    "더 이상 대여 가능한 갯수가 없습니다.",
+                    "더 이상 대여 가능한 개수가 없습니다.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -86,7 +87,7 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this@QRScanActivity,
-                    "더 이상 대여 가능한 갯수가 없습니다.",
+                    "더 이상 대여 가능한 개수가 없습니다.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -166,6 +167,7 @@ class QRScanActivity : AppCompatActivity() {
     private fun decreaseRentCount(url: String) {
         val timeRef = database.getReference("urls").child(url).child("count")
 
+
         timeRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val currentCount = dataSnapshot.getValue(Int::class.java) ?: 0
@@ -175,14 +177,16 @@ class QRScanActivity : AppCompatActivity() {
                     timeRef.setValue(updatedCount)
                     Toast.makeText(
                         this@QRScanActivity,
-                        "해당 URL의 대여 갯수가 줄었습니다.",
+                        "해당 URL의 대여 개수가 줄었습니다.",
                         Toast.LENGTH_SHORT
                     ).show()
                     binding.numOfEightPin.text = updatedCount.toString()
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment())
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
                 } else {
                     Toast.makeText(
                         this@QRScanActivity,
-                        "더 이상 대여 가능한 갯수가 없습니다.",
+                        "더 이상 대여 가능한 개수가 없습니다.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
