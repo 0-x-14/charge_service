@@ -48,44 +48,42 @@ import kotlin.concurrent.timer
 
         time.text = String.format("%02d : %02d : %02d", hour, minute, second)
 
-        timer_test.setOnClickListener{
-            var timeTick = 7200
-            // 2시간, 초 단위로 계산
+        var timeTick = 7200
+        // 2시간, 초 단위로 계산
 
-            hour = timeTick / 3600
+        hour = timeTick / 3600
 
-            if (hour == 2) {
-                minute = 0
-                second = 0
-            } // 최대 대여 시간이 2시간이므로 hour==2인 경우 분과 초는 모두 0
-            else if (hour == 1) {
-                minute = (timeTick-3600) / 60
-                second = (timeTick-3600) % 60
-            } // 1시간 XX분 XX초일 경우 전체 시간에서 3600을 뺀 뒤 계산
-            else {
-                minute = timeTick / 60
-                second = timeTick % 60
+        if (hour == 2) {
+            minute = 0
+            second = 0
+        } // 최대 대여 시간이 2시간이므로 hour==2인 경우 분과 초는 모두 0
+        else if (hour == 1) {
+            minute = (timeTick-3600) / 60
+            second = (timeTick-3600) % 60
+        } // 1시간 XX분 XX초일 경우 전체 시간에서 3600을 뺀 뒤 계산
+        else {
+            minute = timeTick / 60
+            second = timeTick % 60
+        }
+
+        // concurrent를 이용해서 timer 설정
+        timer(period = 1000) {
+            // 1초마다 실행됨
+            requireActivity().runOnUiThread {
+                time.text = String.format("%02d : %02d : %02d", hour, minute, second)
+            } // 백그라운드에서도 타이머가 실행되도록 하기 위함
+            if (hour == 0 && second == 0 && minute == 0) {
+                time.text = "사용 시간이 종료되었습니다. 반납해주세요"
             }
-
-            // concurrent를 이용해서 timer 설정
-            timer(period = 1000) {
-                // 1초마다 실행됨
-                requireActivity().runOnUiThread {
-                    time.text = String.format("%02d : %02d : %02d", hour, minute, second)
-                } // 백그라운드에서도 타이머가 실행되도록 하기 위함
-                if (hour == 0 && second == 0 && minute == 0) {
-                    time.text = "사용 시간이 종료되었습니다. 반납해주세요"
-                }
-                if (minute == 0 && second == 0) {
-                    hour--
-                    minute = 60
-                }
-                if (second == 0) {
-                    minute--
-                    second = 60
-                }
-                second--
+            if (minute == 0 && second == 0) {
+                hour--
+                minute = 60
             }
+            if (second == 0) {
+                minute--
+                second = 60
+            }
+            second--
         }
     }
 }
