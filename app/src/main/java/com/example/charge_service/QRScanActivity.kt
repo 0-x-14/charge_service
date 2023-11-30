@@ -13,16 +13,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
 class QRScanActivity : AppCompatActivity() {
-
     private lateinit var database: FirebaseDatabase
     private lateinit var urls1: Array<String>
     private lateinit var urls2: Array<String>
     private lateinit var urls3: Array<String>
     private lateinit var binding: RentalBinding // 변경된 부분
     private val RentalCompFragment by lazy {RentalCompFragment()}
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
