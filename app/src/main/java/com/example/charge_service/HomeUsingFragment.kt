@@ -19,7 +19,14 @@ class HomeUsingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home_using, container, false)
+        val rootView = inflater.inflate(R.layout.home_using, container, false)
+
+        val mapsFragment = MapsFragment(requireActivity())
+        childFragmentManager.beginTransaction()
+            .replace(R.id.mapView, mapsFragment)
+            .commit()
+
+        return rootView
     }
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
