@@ -31,9 +31,9 @@ class PayFragment : Fragment() {
         }
         val binding = PayBinding.inflate(layoutInflater)
 
-        binding.menuIcon.setOnClickListener{
-            binding.homeLayout.openDrawer(GravityCompat.END)
-        }
+//        binding.menuIcon.setOnClickListener{
+//            binding.homeLayout.openDrawer(GravityCompat.END)
+//        }
 
 
     }

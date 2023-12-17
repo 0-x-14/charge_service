@@ -1,13 +1,33 @@
 {
   "project_info": {
-    "project_number": "1449448795",
-    "project_id": "charge-service-5851d",
-    "storage_bucket": "charge-service-5851d.appspot.com"
+    "project_number": "983948497426",
+    "firebase_url": "https://charging-9d404-default-rtdb.firebaseio.com",
+    "project_id": "charging-9d404",
+    "storage_bucket": "charging-9d404.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1449448795:android:eccd843c659a9c3728367e",
+        "mobilesdk_app_id": "1:983948497426:android:8627bcb81dbede18367ecb",
+        "android_client_info": {
+          "package_name": "charging.smw"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiqE5V86w2iJp-vCDOTUTShXtbHqemh-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983948497426:android:5e4fc62ab24f74b6367ecb",
         "android_client_info": {
           "package_name": "com.example.charge_service"
         }
@@ -15,7 +35,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB9GZZt329472Xvckrblji8oXBQfU1CLXI"
+          "current_key": "AIzaSyBiqE5V86w2iJp-vCDOTUTShXtbHqemh-I"
         }
       ],
       "services": {

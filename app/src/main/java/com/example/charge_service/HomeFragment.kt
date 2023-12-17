@@ -38,16 +38,16 @@ class HomeFragment : Fragment() {
 
         val binding = HomeBinding.inflate(layoutInflater)
 
-        val userName = binding.textView
-        val id = preferences.getString("id", "")
-        userName.text = "${id} 님 안녕하세요"
+//        val userName = binding.textView
+//        val id = preferences.getString("id", "")
+//        userName.text = "${id} 님 안녕하세요"
 
-        binding.menuBtn.setOnClickListener{
-            binding.homeLayout.openDrawer(GravityCompat.END)
-        }
-        binding.alarmBtn.setOnClickListener{
-            //alarm fragment
-        }
+//        binding.menuBtn.setOnClickListener{
+//            binding.homeLayout.openDrawer(GravityCompat.END)
+//        }
+//        binding.alarmBtn.setOnClickListener{
+//            //alarm fragment
+//        }
     }
 
     override fun onCreateView(

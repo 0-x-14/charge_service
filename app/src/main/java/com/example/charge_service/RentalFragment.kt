@@ -1,49 +1,107 @@
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.app.ActivityCompat.startActivityForResult
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.charge_service.QRScanActivity
 import com.example.charge_service.R
+import com.google.firebase.database.FirebaseDatabase
+import com.google.zxing.integration.android.IntentIntegrator
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RentalFragment : Fragment() {
 
+    private lateinit var database: FirebaseDatabase
+    private lateinit var rentalButton1: Button
+    private lateinit var rentalButton2: Button
+    private lateinit var rentalButton3: Button
+    private lateinit var textView1: TextView
+    private lateinit var textView2: TextView
+    private lateinit var textView3: TextView
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.rental, container, false)
+        database = FirebaseDatabase.getInstance()
 
-        // Button 1 Click Listener
-        val btnScan1: Button = view.findViewById(R.id.rentalButton1)
-        btnScan1.setOnClickListener {
-            startQRScannerForType("8핀", 1)
+        rentalButton1 = view.findViewById(R.id.rentalButton1)
+        rentalButton2 = view.findViewById(R.id.rentalButton2)
+        rentalButton3 = view.findViewById(R.id.rentalButton3)
+        textView1 = view.findViewById(R.id.numOfEightPin)
+        textView2 = view.findViewById(R.id.numOfCtype)
+        textView3 = view.findViewById(R.id.numOfnote)
+
+        rentalButton1.setOnClickListener {
+            startQRScanner(1)
+            textView1.text = (textView1.text.toString().toInt() - 1).toString()
+
         }
 
-        // Button 2 Click Listener
-        val btnScan2: Button = view.findViewById(R.id.rentalButton2)
-        btnScan2.setOnClickListener {
-            startQRScannerForType("C타입", 2)
+        rentalButton2.setOnClickListener {
+            startQRScanner(2)
+            textView2.text = (textView2.text.toString().toInt() - 1).toString()
         }
 
-        // Button 3 Click Listener
-        val btnScan3: Button = view.findViewById(R.id.rentalButton3)
-        btnScan3.setOnClickListener {
-            startQRScannerForType("노트", 3)
+        rentalButton3.setOnClickListener {
+            startQRScanner(3)
+            textView3.text = (textView3.text.toString().toInt() - 1).toString()
         }
 
         return view
     }
 
-    private fun startQRScannerForType(type: String, requestCode: Int) {
-        val intent = Intent(activity, QRScanActivity::class.java)
-        intent.putExtra("TYPE", type)
-        startActivityForResult(intent, requestCode)
+    private fun startQRScanner(buttonId: Int) {
+        val integrator = IntentIntegrator.forSupportFragment(this)
+        integrator.setOrientationLocked(false)
+        integrator.initiateScan()
+        integrator.setRequestCode(buttonId) // 각 버튼을 구분하기 위한 코드 설정
     }
 
-    // Add onActivityResult here if needed
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+            if (result != null) {
+                if (result.contents == null) {
+                    Toast.makeText(requireContext(), "취소됨", Toast.LENGTH_SHORT).show()
+                } else {
+                    // 각 버튼에 대응하는 처리
+                    when (requestCode) {
+                        1 -> { Toast.makeText(requireContext(), "8핀 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        2 -> { Toast.makeText(requireContext(), "C타입 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        3 -> { Toast.makeText(requireContext(), "노트북 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                    }
+                    saveCurrentTimeToFirebase()
+                }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data)
+            }
+        }
+    }
+
+    private fun saveCurrentTimeToFirebase() {
+        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val timeRef = database.getReference("rental_time").push()
+        timeRef.setValue(currentTime)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "대여 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
 }
+

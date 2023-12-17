@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -29,26 +30,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
-        // login 버튼을 누르면 home으로 이동
         val loginBtn: Button = findViewById(R.id.login_button)
-        // 입력한 id값이 sharedPreference에 저장
-        loginBtn.setOnClickListener{
+        loginBtn.setOnClickListener {
             val editText1 = findViewById<EditText>(R.id.editText1)
             val id = editText1.text.toString()
             preferences.setString("id", id)
 
             val intent = Intent(this, HomeActivity::class.java)
-            // homeactivity였음
             startActivity(intent)
-
         }
-
-//        loginBtn.setOnClickListener {
-//            val intent = Intent(this@MainActivity, HomeActivity::class.java)
-//            Log.d("jupy", "num.1")
-//            startActivity(intent)
-
-
 
         // 위치 권한 확인
         val locationPermission = ContextCompat.checkSelfPermission(
@@ -100,6 +90,11 @@ class MainActivity : AppCompatActivity() {
 
             //권한 이미 부여된 경우 실행할 작업(허용된 후에)
         }
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
+
     }
 
     // 권한 요청 결과 처리
