@@ -2,6 +2,7 @@ package com.example.charge_service
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.HomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -68,7 +69,11 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
-    internal fun changeFragment(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, fragment).commit()
+
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
     }
 }

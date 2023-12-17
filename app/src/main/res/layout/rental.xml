@@ -6,9 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_layout" >
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RentalFragment"
@@ -92,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="@id/box"
         app:layout_constraintTop_toTopOf="@id/box_text_1"
-        app:layout_constraintVertical_bias="0.472">
+        app:layout_constraintVertical_bias="0.454">
 
 
         <TextView
@@ -110,21 +108,21 @@
             android:text="8핀"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/numOfnote"
+            app:layout_constraintBottom_toTopOf="@+id/textView29"
+            app:layout_constraintEnd_toStartOf="@+id/numOfEightPin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/numOfEightPin"
-            android:layout_width="45dp"
-            android:layout_height="37dp"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="bottom"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="3"
             android:textSize="20sp"
@@ -143,6 +141,7 @@
             android:layout_marginTop="16dp"
             android:text="알림 받기"
             app:layout_constraintEnd_toStartOf="@+id/rentalButton3"
+            app:layout_constraintHorizontal_bias="0.871"
             app:layout_constraintStart_toEndOf="@+id/numOfnote"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -178,28 +177,29 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="C타입"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/textView27"
             app:layout_constraintEnd_toStartOf="@+id/numOfCtype"
-            app:layout_constraintHorizontal_bias="0.833"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/numOfCtype"
-            android:layout_width="46dp"
-            android:layout_height="37dp"
+            android:layout_width="35dp"
+            android:layout_height="45dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="bottom"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="3"
             android:textSize="20sp"
@@ -233,32 +233,37 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_gravity="bottom"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="노트북"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/numOfEightPin"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView29"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/numOfnote"
-            android:layout_width="48dp"
-            android:layout_height="33dp"
+            android:layout_width="42dp"
+            android:layout_height="43dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="bottom"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="3dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
             android:text="3"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/eightpin_toggle3"
-            app:layout_constraintTop_toBottomOf="@+id/numOfCtype" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toBottomOf="@+id/numOfCtype"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Switch
             android:id="@+id/eightpin_toggle3"

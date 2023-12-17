@@ -66,4 +66,7 @@ dependencies {
     //firebase 추가코드
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
+    implementation ("androidx.appcompat:appcompat:1.3.1")
+
 }
