@@ -43,18 +43,32 @@ class RentalFragment : Fragment() {
 
         rentalButton1.setOnClickListener {
             startQRScanner(1)
-            textView1.text = (textView1.text.toString().toInt() - 1).toString()
-
+            if(textView1.text.toString().toInt() > 0){
+                textView1.text = (textView1.text.toString().toInt() - 1).toString()
+            }
+            else{
+                Toast.makeText(requireContext(), "8핀 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
+            }
         }
 
         rentalButton2.setOnClickListener {
             startQRScanner(2)
-            textView2.text = (textView2.text.toString().toInt() - 1).toString()
+            if(textView2.text.toString().toInt() > 0){
+                textView2.text = (textView2.text.toString().toInt() - 1).toString()
+            }
+            else{
+                Toast.makeText(requireContext(), "C타입 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
+            }
         }
 
         rentalButton3.setOnClickListener {
             startQRScanner(3)
-            textView3.text = (textView3.text.toString().toInt() - 1).toString()
+           if(textView3.text.toString().toInt() > 0){
+               textView3.text = (textView3.text.toString().toInt() - 1).toString()
+           }
+            else{
+                Toast.makeText(requireContext(), "노트북 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
+            }
         }
 
         return view
@@ -104,4 +118,3 @@ class RentalFragment : Fragment() {
 
 
 }
-

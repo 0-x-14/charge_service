@@ -28,8 +28,13 @@ class HomeActivity: AppCompatActivity() {
     private val ReturnFragment by lazy {ReturnFragment()}
     private val PayFragment by lazy {PayFragment()}
     private val RentalConditionFragment by lazy {RentalConditionFragment()}
-    //private val binding by lazy { HomeBinding.inflate(layoutInflater) }
-    private lateinit var preferences: PreferenceUtil
+    //private vmeBinding.inflate(layoutInflater) }
+    private lateinit var preferences: al binding by lazy { HoPreferenceUtil
+
+    private val HomeUsingFragment by lazy {HomeUsingFragment()}
+    private val RentalCompFragment by lazy {RentalCompFragment()}
+    private val ReturnCompFragment by lazy {ReturnCompFragment()}
+    // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
@@ -71,6 +76,8 @@ class HomeActivity: AppCompatActivity() {
                 when(it.itemId) {
                     R.id.navi_home ->
                     { changeFragment(HomeFragment)
+                    {
+                        changeFragment(HomeUsingFragment)
                     true
                     }
                     R.id.navi_rental -> {
@@ -96,7 +103,11 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
-    internal fun changeFragment(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, fragment).commit()
+
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
     }
 }
