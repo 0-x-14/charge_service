@@ -3,6 +3,7 @@ package com.example.charge_service
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -26,7 +27,6 @@ class QRScanActivity : AppCompatActivity() {
         binding = RentalBinding.inflate(layoutInflater) // 변경된 부분
         setContentView(binding.root)
 
-
         val output_text1 = findViewById<TextView>(R.id.numOfEightPin)
         val output_text2 = findViewById<TextView>(R.id.numOfCtype)
         val output_text3 = findViewById<TextView>(R.id.numOfnote)
@@ -49,7 +49,6 @@ class QRScanActivity : AppCompatActivity() {
             "https://m.site.naver.com/1geQL",
             "https://m.site.naver.com/1geQD"
         )
-
         binding.rentalButton1.setOnClickListener {
             if (num1 > 0) {
                 num1 -= 1
@@ -90,9 +89,8 @@ class QRScanActivity : AppCompatActivity() {
             }
         }
 
-
         startQRScanner()
-        saveCurrentTimeToFirebase()
+        // saveCurrentTimeToFirebase()
     }
 
     private fun startQRScanner() {
@@ -112,7 +110,6 @@ class QRScanActivity : AppCompatActivity() {
             } else {
                 val scannedUrl = result1.contents
                 Toast.makeText(this, "8핀 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
-
                 if (urls1.contains(scannedUrl)) {
                     decreaseRentCount(scannedUrl)
                 } else {

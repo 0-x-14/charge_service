@@ -10,8 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlin.concurrent.timer
 
-// timer의 위치가 xml에 설정해놓은대로 안 떠서 수정 필요함
-// timer를 실행해놓고 다른 네비게이션 탭으로 이동하면 오류 발생. 수정 필요함
 
  class RentalCompFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +36,6 @@ import kotlin.concurrent.timer
 
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
-        val timer_test: Button = view.findViewById(R.id.timer_test)
-        // 임시로 타이머가 작동되는지 확인하기 위해 close 버튼을 눌렀을 때 타이머가 실행되도록 함
 
         var hour = 0
         var minute = 0
@@ -69,8 +65,10 @@ import kotlin.concurrent.timer
         // concurrent를 이용해서 timer 설정
         timer(period = 1000) {
             // 1초마다 실행됨
-            requireActivity().runOnUiThread {
-                time.text = String.format("%02d : %02d : %02d", hour, minute, second)
+            if (!isDetached && activity != null) {
+                requireActivity().runOnUiThread {
+                    time.text = String.format("%02d : %02d : %02d", hour, minute, second)
+                }
             } // 백그라운드에서도 타이머가 실행되도록 하기 위함
             if (hour == 0 && second == 0 && minute == 0) {
                 time.text = "사용 시간이 종료되었습니다. 반납해주세요"

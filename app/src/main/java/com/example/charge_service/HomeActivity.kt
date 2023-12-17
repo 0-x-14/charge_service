@@ -46,8 +46,8 @@ class HomeActivity: AppCompatActivity() {
                     true
                     }
                     R.id.navi_rental -> {
-                        // changeFragment(RentalCompFragment)
-                        changeFragment(RentalConditionFragment)
+                        changeFragment(RentalCompFragment)
+                        // changeFragment(RentalConditionFragment)
                         true
                     }
                     R.id.navi_return -> {
