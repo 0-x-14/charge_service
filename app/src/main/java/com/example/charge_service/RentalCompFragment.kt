@@ -1,21 +1,22 @@
 package com.example.charge_service
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import java.util.Timer
 import kotlin.concurrent.timer
 
-// timer의 위치가 xml에 설정해놓은대로 안 떠서 수정 필요함
-// timer를 실행해놓고 다른 네비게이션 탭으로 이동하면 오류 발생. 수정 필요함
 
  class RentalCompFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+     private var timer: Timer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,26 +30,25 @@ import kotlin.concurrent.timer
             homeActivity.changeFragment(HomeFragment())
         }
 
+        initTimer(view)
+
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun initTimer(view: View) {
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
-        //val timer_test: Button = view.findViewById(R.id.timer_test)
-        // 임시로 타이머가 작동되는지 확인하기 위해 close 버튼을 눌렀을 때 타이머가 실행되도록 함
+
 
         var hour = 0
         var minute = 0
         var second = 0
         // hour, minute, second는 남은 시간에 따라 바뀌므로 var로 설정함
 
-        time.text = String.format("%02d : %02d : %02d", hour, minute, second)
-
         var timeTick = 7200
         // 2시간, 초 단위로 계산
+
+        time.text = String.format("%02d : %02d : %02d", hour, minute, second)
 
         hour = timeTick / 3600
 
@@ -68,8 +68,10 @@ import kotlin.concurrent.timer
         // concurrent를 이용해서 timer 설정
         timer(period = 1000) {
             // 1초마다 실행됨
-            requireActivity().runOnUiThread {
-                time.text = String.format("%02d : %02d : %02d", hour, minute, second)
+            if (!isDetached && activity != null) {
+                requireActivity().runOnUiThread {
+                    time.text = String.format("%02d : %02d : %02d", hour, minute, second)
+                }
             } // 백그라운드에서도 타이머가 실행되도록 하기 위함
             if (hour == 0 && second == 0 && minute == 0) {
                 time.text = "사용 시간이 종료되었습니다. 반납해주세요"
@@ -85,4 +87,12 @@ import kotlin.concurrent.timer
             second--
         }
     }
+
+     override fun onDestroyView() {
+         super.onDestroyView()
+
+         // 프래그먼트가 뷰를 파괴할 때 타이머도 취소해야 함
+         timer?.cancel()
+         timer = null
+     }
 }

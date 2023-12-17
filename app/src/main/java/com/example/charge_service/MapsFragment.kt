@@ -29,7 +29,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
+class MapsFragment(val activity: Activity) : Fragment() {
     lateinit var locationPermission: ActivityResultLauncher<Array<String>>
 
     private lateinit var gMap: GoogleMap
@@ -46,7 +46,14 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
             ActivityResultContracts.RequestMultiplePermissions()
         ) { results ->
             if (results.all { it.value }) {
-                updateLocation()
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
+                // updateLocation()
+                // 권한이 모두 허용된 경우에만 위치 정보를 가져오는 함수 호출
+                val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment?
+                mapFragment?.getMapAsync {
+                    gMap = it
+                    updateLocation()
+                }
                 // 권한이 모두 허용된 경우에만 위치 정보를 가져오는 함수 호출
             }
             else {
@@ -65,14 +72,6 @@ class MapsFragment(val activity: Activity) : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        gMap = googleMap
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
-        updateLocation() // 현재 위치 정보를 계속해서 불러오는 함수
     }
 
     fun updateLocation() {
