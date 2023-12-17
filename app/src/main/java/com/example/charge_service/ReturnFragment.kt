@@ -1,10 +1,10 @@
 package com.example.charge_service
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -60,6 +60,20 @@ class ReturnFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 >>>>>>> f59e417 (주영 타이머 구현 -1 (미완성))
+=======
+import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.findNavController
+import com.example.charge_service.MainActivity.Companion.preferences
+import com.example.charge_service.databinding.ReturnCompBinding
+import com.example.charge_service.databinding.ReturnPageBinding
+import android.widget.Button
+
+
+class ReturnFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+>>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
         // return page에 대한 xml
         val binding = ReturnPageBinding.inflate(layoutInflater)
 
@@ -67,8 +81,8 @@ class ReturnFragment : Fragment() {
 //        val id = preferences.getString("id", "")
 //        userName.text = "${id} 님 안녕하세요"
         // 눈송이를 id값으로 변경
-
         // 메뉴와 알람 누르면 이벤트 처리
+<<<<<<< HEAD
 //        binding.menuBtn.setOnClickListener{
 //            binding.homeLayout.openDrawer(GravityCompat.END)
 //        }
@@ -98,12 +112,22 @@ class ReturnFragment : Fragment() {
     private lateinit var binding: ReturnPageBinding
     private lateinit var database: FirebaseDatabase
 >>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)
+=======
+        binding.menuBtn.setOnClickListener{
+            binding.homeLayout.openDrawer(GravityCompat.END)
+        }
+        binding.alarmBtn.setOnClickListener{
+        }
+
+    }
+>>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         binding = ReturnPageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -188,3 +212,29 @@ class ReturnFragment : Fragment() {
     }
 }
 >>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)
+=======
+        // 기본 화면 세팅
+        val view = inflater.inflate(R.layout.return_page, container, false)
+        // 각 버튼 클릭시 QR코드 스캔으로 넘어감
+        val btnScan1: Button = view.findViewById(R.id.returnButton1)
+        btnScan1.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+        val btnScan2: Button = view.findViewById(R.id.returnButton2)
+        btnScan2.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+        val btnScan3: Button = view.findViewById(R.id.returnButton3)
+        btnScan3.setOnClickListener {
+            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
+            val intent = Intent(getActivity(), QRReturnActivity::class.java)
+            startActivity(intent) // ScanQRActivity 시작
+        }
+        return view
+    }
+}
+>>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))

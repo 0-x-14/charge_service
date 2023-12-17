@@ -36,7 +36,11 @@
     <ScrollView
         android:fillViewport="true"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="395dp"
+=======
+        android:layout_height="500dp"
+>>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
