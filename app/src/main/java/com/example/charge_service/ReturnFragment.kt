@@ -2,10 +2,10 @@ package com.example.charge_service
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import android.widget.Button
@@ -83,38 +83,108 @@ class ReturnFragment : Fragment() {
 //=======
 //>>>>>>> bd686f0bd44fcc32dfb786796d152e4888390a3b
 >>>>>>> df5ce6c (로그인, main화면 수정,이용약관 스크롤 수정)
+=======
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.charge_service.databinding.ReturnPageBinding
+import com.google.firebase.database.FirebaseDatabase
+import com.google.zxing.integration.android.IntentIntegrator
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+class ReturnFragment : Fragment() {
+    private lateinit var binding: ReturnPageBinding
+    private lateinit var database: FirebaseDatabase
+>>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 기본 화면 세팅
-        val view = inflater.inflate(R.layout.return_page, container, false)
-
-        // 각 버튼 클릭시 QR코드 스캔으로 넘어감
-        val btnScan1: Button = view.findViewById(R.id.returnButton1)
-        btnScan1.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRReturnActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
-
-        val btnScan2: Button = view.findViewById(R.id.returnButton2)
-        btnScan2.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRReturnActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
-
-        val btnScan3: Button = view.findViewById(R.id.returnButton3)
-        btnScan3.setOnClickListener {
-            // MainActivity에서 ScanQRActivity로 이동하는 Intent 생성
-            val intent = Intent(getActivity(), QRReturnActivity::class.java)
-            startActivity(intent) // ScanQRActivity 시작
-        }
-
-        return view
+        binding = ReturnPageBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+<<<<<<< HEAD
 }
 
+=======
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        database = FirebaseDatabase.getInstance()
+
+        binding.returnButton1.setOnClickListener {
+            startQRScanner(1)
+            saveCurrentTimeToFirebase()
+        }
+
+        binding.returnButton2.setOnClickListener {
+            startQRScanner(2)
+            saveCurrentTimeToFirebase()
+        }
+
+        binding.returnButton3.setOnClickListener {
+            startQRScanner(3)
+            saveCurrentTimeToFirebase()
+        }
+    }
+
+    private fun startQRScanner(buttonId: Int) {
+        val integrator = IntentIntegrator.forSupportFragment(this)
+        integrator.setOrientationLocked(false)
+        integrator.initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+            if (result != null) {
+                if (result.contents == null) {
+                    // 각 버튼에 따른 취소 처리
+                    when (requestCode) {
+                        1 -> { /* 버튼 1에 대한 취소 처리 */ }
+                        2 -> { /* 버튼 2에 대한 취소 처리 */ }
+                        3 -> { /* 버튼 3에 대한 취소 처리 */ }
+                    }
+                    Toast.makeText(requireContext(), "취소됨", Toast.LENGTH_SHORT).show()
+                    requireActivity().finish()
+                } else {
+                    // 각 버튼에 따른 성공 처리
+                    when (requestCode) {
+
+                        1 -> {  Toast.makeText(requireContext(), "8핀 충전기 반납이 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        2 -> { Toast.makeText(requireContext(), "C타입 충전기 반납이 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        3 -> { Toast.makeText(requireContext(), "노트북 충전기 반납이 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                    }
+                    saveCurrentTimeToFirebase()
+                    // 처리가 성공했다는 토스트 메시지를 띄웁니다.
+                    Toast.makeText(requireContext(), "충전기 반납이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+
+                    // Fragment를 교체하는 코드
+                    val returnCompFragment = ReturnCompFragment()
+                    val transaction = requireFragmentManager().beginTransaction()
+                    transaction.replace(R.id.navi_fragment_container, returnCompFragment)
+                    transaction.commit()
+                }
+            }
+        }
+    }
+
+    private fun saveCurrentTimeToFirebase() {
+        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val timeRef = database.getReference("return_time").push()
+        timeRef.setValue(currentTime)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "현재 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+    }
+}
+>>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)

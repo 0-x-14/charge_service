@@ -103,5 +103,9 @@ class RentalFragment : Fragment() {
     }
 
 
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)

@@ -13,9 +13,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+<<<<<<< HEAD
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.charge_service.databinding.ActivityMainBinding
+=======
+import androidx.fragment.app.Fragment
+>>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)
 import com.example.charge_service.databinding.HomeBinding
 import com.example.charge_service.databinding.MainHeaderBinding
 import com.example.charge_service.databinding.NavigationHeaderBinding
@@ -96,7 +100,11 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
-    internal fun changeFragment(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, fragment).commit()
+
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
     }
 }
