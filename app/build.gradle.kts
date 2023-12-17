@@ -68,5 +68,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation ("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.naver.maps:map-sdk:3.17.0")
 
 }
