@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+<<<<<<< HEAD
 import androidx.fragment.app.Fragment
+=======
+import java.util.Timer
+>>>>>>> 95d0ca7 ([주영] 로딩 화면 추가)
 import kotlin.concurrent.timer
 
 
@@ -14,6 +18,8 @@ import kotlin.concurrent.timer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+     private var timer: Timer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +33,12 @@ import kotlin.concurrent.timer
             homeActivity.changeFragment(HomeFragment())
         }
 
+        initTimer(view)
+
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun initTimer(view: View) {
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
 <<<<<<< HEAD
@@ -44,15 +50,16 @@ import kotlin.concurrent.timer
 =======
 >>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
 
+
         var hour = 0
         var minute = 0
         var second = 0
         // hour, minute, second는 남은 시간에 따라 바뀌므로 var로 설정함
 
-        time.text = String.format("%02d : %02d : %02d", hour, minute, second)
-
         var timeTick = 7200
         // 2시간, 초 단위로 계산
+
+        time.text = String.format("%02d : %02d : %02d", hour, minute, second)
 
         hour = timeTick / 3600
 
@@ -91,4 +98,12 @@ import kotlin.concurrent.timer
             second--
         }
     }
+
+     override fun onDestroyView() {
+         super.onDestroyView()
+
+         // 프래그먼트가 뷰를 파괴할 때 타이머도 취소해야 함
+         timer?.cancel()
+         timer = null
+     }
 }

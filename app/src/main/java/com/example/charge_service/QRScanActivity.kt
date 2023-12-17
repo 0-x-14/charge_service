@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.charge_service.databinding.RentalBinding
+import com.google.android.gms.common.internal.safeparcel.SafeParcelReader.createBundle
 import com.google.firebase.database.*
 import com.google.zxing.integration.android.IntentIntegrator
 import java.text.SimpleDateFormat
@@ -207,6 +208,12 @@ class QRScanActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     binding.numOfEightPin.text = updatedCount.toString()
+<<<<<<< HEAD
+=======
+
+                    supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment())
+                    // 대여가 성공할 경우 대여 완료 화면으로 이동함
+>>>>>>> 95d0ca7 ([주영] 로딩 화면 추가)
                 } else {
                     Toast.makeText(
                         this@QRScanActivity,
