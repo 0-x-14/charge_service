@@ -14,6 +14,7 @@ class HomeActivity: AppCompatActivity() {
     private val binding by lazy { HomeBinding.inflate(layoutInflater) }
     private lateinit var preferences: PreferenceUtil
 
+    private val HomeUsingFragment by lazy {HomeUsingFragment()}
     private val RentalCompFragment by lazy {RentalCompFragment()}
     private val ReturnCompFragment by lazy {ReturnCompFragment()}
     // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
@@ -39,7 +40,9 @@ class HomeActivity: AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.navi_home ->
-                    { changeFragment(HomeFragment)
+                    {
+                        changeFragment(HomeUsingFragment)
+                        // changeFragment(HomeFragment)
 //                        val userName = findViewById<TextView>(R.id.textView)
 //                        val id = preferences.getString("id", "")
 //                        userName.text = "${id} 님 안녕하세요"
