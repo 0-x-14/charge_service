@@ -36,10 +36,13 @@ import kotlin.concurrent.timer
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
 <<<<<<< HEAD
+<<<<<<< HEAD
         //val timer_test: Button = view.findViewById(R.id.timer_test)
         // 임시로 타이머가 작동되는지 확인하기 위해 close 버튼을 눌렀을 때 타이머가 실행되도록 함
 =======
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
 
         var hour = 0
         var minute = 0

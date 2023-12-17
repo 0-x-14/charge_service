@@ -8,6 +8,7 @@ import android.view.ViewGroup
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.widget.Button
 =======
 >>>>>>> df5ce6c (로그인, main화면 수정,이용약관 스크롤 수정)
@@ -74,6 +75,20 @@ class ReturnFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.findNavController
+import com.example.charge_service.MainActivity.Companion.preferences
+import com.example.charge_service.databinding.ReturnCompBinding
+import com.example.charge_service.databinding.ReturnPageBinding
+import android.widget.Button
+
+
+class ReturnFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
         // return page에 대한 xml
         val binding = ReturnPageBinding.inflate(layoutInflater)
 
@@ -120,7 +135,10 @@ class ReturnFragment : Fragment() {
         }
 
     }
+<<<<<<< HEAD
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -236,5 +254,9 @@ class ReturnFragment : Fragment() {
         }
         return view
     }
+<<<<<<< HEAD
 }
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+}
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)

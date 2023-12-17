@@ -91,10 +91,14 @@ class QRScanActivity : AppCompatActivity() {
 
         startQRScanner()
 <<<<<<< HEAD
+<<<<<<< HEAD
         //saveCurrentTimeToFirebase()
 =======
         // saveCurrentTimeToFirebase()
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+        // saveCurrentTimeToFirebase()
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
     }
 
     private fun startQRScanner() {
@@ -115,11 +119,14 @@ class QRScanActivity : AppCompatActivity() {
                 val scannedUrl = result1.contents
                 Toast.makeText(this, "8핀 충전기 대여 완료: $scannedUrl", Toast.LENGTH_SHORT).show()
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
 =======
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
+=======
+>>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
                 if (urls1.contains(scannedUrl)) {
                     decreaseRentCount(scannedUrl)
                     supportFragmentManager.beginTransaction().replace(R.id.navi_fragment_container, RentalCompFragment)
