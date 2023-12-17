@@ -9,7 +9,7 @@
         android:id="@+id/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="눈송이 님, 안녕하세요!"
+        android:text="부가설정"
         android:textSize="20sp"
         android:layout_marginBottom="20dp"/>
 

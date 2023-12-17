@@ -1,13 +1,13 @@
 package com.example.charge_service
 
+
 import RentalFragment
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 
 class RentalConditionFragment : Fragment() {
 
