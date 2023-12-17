@@ -35,8 +35,15 @@ class HomeActivity: AppCompatActivity() {
     //private val binding by lazy { HomeBinding.inflate(layoutInflater) }
     private lateinit var preferences: PreferenceUtil
 
+<<<<<<< HEAD
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+=======
+    private val HomeUsingFragment by lazy {HomeUsingFragment()}
+    private val RentalCompFragment by lazy {RentalCompFragment()}
+    private val ReturnCompFragment by lazy {ReturnCompFragment()}
+    // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
+>>>>>>> 96ae0fd ([주영] 지도 API 재시도 -1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
     // navigationViewHeader 초기화
@@ -74,7 +81,16 @@ class HomeActivity: AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.navi_home ->
+<<<<<<< HEAD
                     { changeFragment(HomeFragment)
+=======
+                    {
+                        changeFragment(HomeUsingFragment)
+                        // changeFragment(HomeFragment)
+//                        val userName = findViewById<TextView>(R.id.textView)
+//                        val id = preferences.getString("id", "")
+//                        userName.text = "${id} 님 안녕하세요"
+>>>>>>> 96ae0fd ([주영] 지도 API 재시도 -1)
                     true
                     }
                     R.id.navi_rental -> {
