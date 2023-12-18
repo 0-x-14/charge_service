@@ -55,7 +55,7 @@ class HomeActivity: AppCompatActivity() {
 
         //로그인 후 id값을 받아와 사용자명 변경
         val id = preferences.getString("id", "") ?: ""
-        val userName = findViewById<TextView>(R.id.userName)
+        val userName = findViewById<TextView>(R.id.user)
         if (userName != null) {
             userName.setText("${id}님 안녕하세요")
         }
