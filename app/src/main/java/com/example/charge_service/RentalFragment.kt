@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.charge_service.HomeActivity
 import com.example.charge_service.R
 import com.google.firebase.database.FirebaseDatabase
 import com.google.zxing.integration.android.IntentIntegrator
@@ -110,6 +111,7 @@ class RentalFragment : Fragment() {
         timeRef.setValue(currentTime)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "대여 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
+                (activity as? HomeActivity)?.switchToRentalCompFragment()
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()

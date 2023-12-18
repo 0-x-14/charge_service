@@ -28,10 +28,6 @@ class HomeActivity: AppCompatActivity() {
         if(savedInstanceState == null) {
             setUpBottomNavigationBar()
         }
-        //val userName = binding.textView
-//        val userName = findViewById<TextView>(R.id.user)
-//        val id = preferences.getString("id", "")
-//        userName.text = "${id} 님 안녕하세요"
     }
 
 
@@ -44,9 +40,6 @@ class HomeActivity: AppCompatActivity() {
                     {
                         changeFragment(HomeUsingFragment)
                         // changeFragment(HomeFragment)
-//                        val userName = findViewById<TextView>(R.id.textView)
-//                        val id = preferences.getString("id", "")
-//                        userName.text = "${id} 님 안녕하세요"
                     true
                     }
                     R.id.navi_rental -> {
@@ -79,4 +72,13 @@ class HomeActivity: AppCompatActivity() {
             .replace(R.id.navi_fragment_container, fragment)
             .commit()
     }
+
+    fun switchToRentalCompFragment() {
+        changeFragment(RentalCompFragment())
+    }
+
+    fun switchToReturnCompFragment() {
+        changeFragment(ReturnCompFragment())
+    }
+
 }
