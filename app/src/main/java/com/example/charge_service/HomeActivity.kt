@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.charge_service.MainActivity.Companion.preferences
 import com.example.charge_service.databinding.ActivityMainBinding
+import com.example.charge_service.databinding.HomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -18,6 +19,8 @@ class HomeActivity: AppCompatActivity() {
     private val ReturnFragment by lazy { ReturnFragment() }
     private val PayFragment by lazy { PayFragment() }
     private val RentalConditionFragment by lazy { RentalConditionFragment() }
+    private val binding by lazy { HomeBinding.inflate(layoutInflater) }
+    private lateinit var preferences: PreferenceUtil
     //private vmeBinding.inflate(layoutInflater) }
 
     private val HomeUsingFragment by lazy { HomeUsingFragment() }
