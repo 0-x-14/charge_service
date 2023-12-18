@@ -1,5 +1,6 @@
 package com.example.charge_service
 
+<<<<<<< HEAD
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,4 +30,7 @@ class AlarmAdapter(private val dataList: List<String>) :
     }
 
     override fun getItemCount(): Int = dataList.size
+=======
+class AlarmAdapter {
+>>>>>>> eb2bf45 ([희주] xml 최종 완료 및 로그인 구현, 오류 수정)
 }
