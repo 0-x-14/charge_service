@@ -117,6 +117,4 @@ class RentalFragment : Fragment() {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
             }
     }
-
-
 }

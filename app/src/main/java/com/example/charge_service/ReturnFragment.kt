@@ -81,12 +81,14 @@ class ReturnFragment : Fragment() {
                     // 처리가 성공했다는 토스트 메시지를 띄웁니다.
                     Toast.makeText(requireContext(), "충전기 반납이 완료되었습니다.", Toast.LENGTH_SHORT).show()
 
-                    // Fragment를 교체하는 코드
-                    val returnCompFragment = ReturnCompFragment()
-                    val transaction = requireFragmentManager().beginTransaction()
-                    transaction.replace(R.id.navi_fragment_container, returnCompFragment)
-                    transaction.commit()
+//                    // Fragment를 교체하는 코드
+//                    val returnCompFragment = ReturnCompFragment()
+//                    val transaction = requireFragmentManager().beginTransaction()
+//                    transaction.replace(R.id.navi_fragment_container, returnCompFragment)
+//                    transaction.commit()
                 }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data)
             }
         }
     }
@@ -97,7 +99,7 @@ class ReturnFragment : Fragment() {
         timeRef.setValue(currentTime)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "현재 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
-                // (activity as? HomeActivity)?.switchToReturnCompFragment()
+                (activity as? HomeActivity)?.switchToReturnCompFragment()
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
