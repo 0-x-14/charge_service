@@ -1,15 +1,10 @@
 package com.example.charge_service
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import com.example.charge_service.MainActivity.Companion.preferences
+import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.HomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,7 +37,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home, container, false)
+        return inflater.inflate(R.layout.home_using, container, false)
     }
 
     companion object {

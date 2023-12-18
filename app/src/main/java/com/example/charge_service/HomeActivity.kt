@@ -1,17 +1,8 @@
 package com.example.charge_service
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
-import android.view.Gravity
-
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,8 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.charge_service.MainActivity.Companion.preferences
 import com.example.charge_service.databinding.ActivityMainBinding
 import com.example.charge_service.databinding.HomeBinding
-import com.example.charge_service.databinding.MainHeaderBinding
-import com.example.charge_service.databinding.NavigationHeaderBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -30,6 +19,8 @@ class HomeActivity: AppCompatActivity() {
     private val ReturnFragment by lazy { ReturnFragment() }
     private val PayFragment by lazy { PayFragment() }
     private val RentalConditionFragment by lazy { RentalConditionFragment() }
+    private val binding by lazy { HomeBinding.inflate(layoutInflater) }
+    private lateinit var preferences: PreferenceUtil
     //private vmeBinding.inflate(layoutInflater) }
 
     private val HomeUsingFragment by lazy { HomeUsingFragment() }
@@ -75,7 +66,7 @@ class HomeActivity: AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.navi_home ->
-                    { changeFragment(HomeFragment)
+                    { changeFragment(HomeUsingFragment)
                         true
                     }
                     R.id.navi_rental -> {
@@ -100,11 +91,17 @@ class HomeActivity: AppCompatActivity() {
             selectedItemId= R.id.navi_home
         }
     }
+    fun switchToRentalCompFragment() {
+        changeFragment(RentalCompFragment())
+    }
 
-        fun changeFragment(fragment: Fragment) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.navi_fragment_container, fragment)
-                .commit()
-        }
+    fun switchToReturnCompFragment() {
+        changeFragment(ReturnCompFragment())
+    }
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
+    }
 }

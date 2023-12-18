@@ -2,19 +2,16 @@ package com.example.charge_service
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.charge_service.databinding.ActivityMainBinding
-import com.example.charge_service.databinding.LoginBinding
 
 class MainActivity : AppCompatActivity() {
     companion object{
