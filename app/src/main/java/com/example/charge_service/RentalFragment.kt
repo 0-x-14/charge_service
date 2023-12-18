@@ -195,6 +195,7 @@ class RentalFragment : Fragment() {
             }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -209,3 +210,6 @@ class RentalFragment : Fragment() {
     }
 }
 >>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
+=======
+}
+>>>>>>> 3ade8a7 ([주영] 반납 화면전환 보완)
