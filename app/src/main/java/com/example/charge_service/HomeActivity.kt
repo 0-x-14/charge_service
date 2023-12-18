@@ -70,6 +70,7 @@ class HomeActivity: AppCompatActivity() {
         if (savedInstanceState == null) {
             setUpBottomNavigationBar()
         }
+<<<<<<< HEAD
 
         //로그인 후 id값을 받아와 사용자명 변경
         val id = preferences.getString("id", "") ?: ""
@@ -86,6 +87,8 @@ class HomeActivity: AppCompatActivity() {
             }
         }
 
+=======
+>>>>>>> 0fd952f ([주영] rental 화면전환 업데이트)
     }
     private fun setUpBottomNavigationBar() {
         bottomNavigationView = findViewById(R.id.Smenu)
@@ -100,10 +103,13 @@ class HomeActivity: AppCompatActivity() {
                     {
                         changeFragment(HomeUsingFragment)
                         // changeFragment(HomeFragment)
+<<<<<<< HEAD
 //                        val userName = findViewById<TextView>(R.id.textView)
 //                        val id = preferences.getString("id", "")
 //                        userName.text = "${id} 님 안녕하세요"
 >>>>>>> 96ae0fd ([주영] 지도 API 재시도 -1)
+=======
+>>>>>>> 0fd952f ([주영] rental 화면전환 업데이트)
                     true
 =======
                         true
@@ -132,10 +138,29 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
         fun changeFragment(fragment: Fragment) {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.navi_fragment_container, fragment)
                 .commit()
         }
+=======
+
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
+    }
+
+    fun switchToRentalCompFragment() {
+        changeFragment(RentalCompFragment())
+    }
+
+    fun switchToReturnCompFragment() {
+        changeFragment(ReturnCompFragment())
+    }
+
+>>>>>>> 0fd952f ([주영] rental 화면전환 업데이트)
 }
