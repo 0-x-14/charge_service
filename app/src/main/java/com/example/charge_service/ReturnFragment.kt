@@ -97,6 +97,7 @@ class ReturnFragment : Fragment() {
         timeRef.setValue(currentTime)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "현재 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
+                (activity as? HomeActivity)?.switchToReturnCompFragment()
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()

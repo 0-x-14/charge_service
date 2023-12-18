@@ -1,26 +1,14 @@
 package com.example.charge_service
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
-import android.view.Gravity
-
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.charge_service.MainActivity.Companion.preferences
 import com.example.charge_service.databinding.ActivityMainBinding
-import com.example.charge_service.databinding.HomeBinding
-import com.example.charge_service.databinding.MainHeaderBinding
-import com.example.charge_service.databinding.NavigationHeaderBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -55,7 +43,7 @@ class HomeActivity: AppCompatActivity() {
 
         //로그인 후 id값을 받아와 사용자명 변경
         val id = preferences.getString("id", "") ?: ""
-        val userName = findViewById<TextView>(R.id.userName)
+        val userName = findViewById<TextView>(R.id.user)
         if (userName != null) {
             userName.setText("${id}님 안녕하세요")
         }
@@ -100,11 +88,17 @@ class HomeActivity: AppCompatActivity() {
             selectedItemId= R.id.navi_home
         }
     }
+    fun switchToRentalCompFragment() {
+        changeFragment(RentalCompFragment())
+    }
 
-        fun changeFragment(fragment: Fragment) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.navi_fragment_container, fragment)
-                .commit()
-        }
+    fun switchToReturnCompFragment() {
+        changeFragment(ReturnCompFragment())
+    }
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.navi_fragment_container, fragment)
+            .commit()
+    }
 }

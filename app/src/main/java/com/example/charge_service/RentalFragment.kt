@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.charge_service.HomeActivity
 import com.example.charge_service.R
 import com.google.firebase.database.FirebaseDatabase
 import com.google.zxing.integration.android.IntentIntegrator
@@ -43,30 +44,27 @@ class RentalFragment : Fragment() {
 
         rentalButton1.setOnClickListener {
             startQRScanner(1)
-            if(textView1.text.toString().toInt() > 0){
+            if (textView1.text.toString().toInt() > 0) {
                 textView1.text = (textView1.text.toString().toInt() - 1).toString()
-            }
-            else{
+            } else {
                 Toast.makeText(requireContext(), "8핀 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
         }
 
         rentalButton2.setOnClickListener {
             startQRScanner(2)
-            if(textView2.text.toString().toInt() > 0){
+            if (textView2.text.toString().toInt() > 0) {
                 textView2.text = (textView2.text.toString().toInt() - 1).toString()
-            }
-            else{
+            } else {
                 Toast.makeText(requireContext(), "C타입 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
         }
 
         rentalButton3.setOnClickListener {
             startQRScanner(3)
-           if(textView3.text.toString().toInt() > 0){
-               textView3.text = (textView3.text.toString().toInt() - 1).toString()
-           }
-            else{
+            if (textView3.text.toString().toInt() > 0) {
+                textView3.text = (textView3.text.toString().toInt() - 1).toString()
+            } else {
                 Toast.makeText(requireContext(), "노트북 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
         }
@@ -92,9 +90,29 @@ class RentalFragment : Fragment() {
                 } else {
                     // 각 버튼에 대응하는 처리
                     when (requestCode) {
-                        1 -> { Toast.makeText(requireContext(), "8핀 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
-                        2 -> { Toast.makeText(requireContext(), "C타입 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
-                        3 -> { Toast.makeText(requireContext(), "노트북 충전기 대여가 완료되었습니다.", Toast.LENGTH_LONG).show() }
+                        1 -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "8핀 충전기 대여가 완료되었습니다.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        2 -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "C타입 충전기 대여가 완료되었습니다.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        3 -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "노트북 충전기 대여가 완료되었습니다.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                     saveCurrentTimeToFirebase()
                 }
@@ -105,16 +123,17 @@ class RentalFragment : Fragment() {
     }
 
     private fun saveCurrentTimeToFirebase() {
-        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val currentTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
         val timeRef = database.getReference("rental_time").push()
         timeRef.setValue(currentTime)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "대여 시간이 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show()
+                (activity as? HomeActivity)?.switchToRentalCompFragment()
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
             }
     }
-
-
 }
+

@@ -9,27 +9,7 @@
     android:background="@drawable/background"
     android:scaleType="centerCrop">
 
-    <ImageView
-        android:id="@+id/alarm_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/alarm_img"
-        app:layout_constraintEnd_toStartOf="@+id/menu_btn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/menu_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/menu_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/textView"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -45,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/round_rental_box"
         android:elevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
