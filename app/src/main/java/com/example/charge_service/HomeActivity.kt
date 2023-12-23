@@ -10,25 +10,17 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.ActivityMainBinding
-import com.example.charge_service.databinding.HomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class HomeActivity: AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
-    private val HomeFragment by lazy { HomeFragment() }
     private val ReturnFragment by lazy { ReturnFragment() }
     private val PayFragment by lazy { PayFragment() }
     private val RentalConditionFragment by lazy { RentalConditionFragment() }
-    private val binding by lazy { HomeBinding.inflate(layoutInflater) }
     private lateinit var preferences: PreferenceUtil
-    private var rentalFragment: RentalFragment? = null
-    //private vmeBinding.inflate(layoutInflater) }
 
     private val HomeUsingFragment by lazy { HomeUsingFragment() }
-    private val RentalCompFragment by lazy { RentalCompFragment() }
-    private val ReturnCompFragment by lazy { ReturnCompFragment() }
-    // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView

@@ -29,23 +29,12 @@ class PayFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         val binding = PayBinding.inflate(layoutInflater)
-
-//        binding.menuIcon.setOnClickListener{
-//            binding.homeLayout.openDrawer(GravityCompat.END)
-//        }
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//        val binding = PayBinding.inflate(layoutInflater)
-//        binding.menuIcon.setOnClickListener{
-//            binding.homeLayout.openDrawer(GravityCompat.END)
-//        }
         return inflater.inflate(R.layout.pay, container, false)
     }
     
