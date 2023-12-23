@@ -197,6 +197,7 @@ class RentalFragment : Fragment() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
             else{
 =======
@@ -206,6 +207,8 @@ class RentalFragment : Fragment() {
             else {
 >>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 =======
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
                 saveToSharedPreferences("numOfEightPin", textView1.text.toString())
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
@@ -224,6 +227,7 @@ class RentalFragment : Fragment() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
             else{
 =======
@@ -233,6 +237,8 @@ class RentalFragment : Fragment() {
             else {
 >>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 =======
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
                 saveToSharedPreferences("numOfCtype", textView2.text.toString())
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
@@ -257,11 +263,14 @@ class RentalFragment : Fragment() {
                 textView3.text = (textView3.text.toString().toInt() - 1).toString()
                 saveToSharedPreferences("numOfnote", textView3.text.toString())
 <<<<<<< HEAD
+<<<<<<< HEAD
                 showNotification()
             }
             else {
 >>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 =======
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
                 Toast.makeText(requireContext(), "노트북 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
@@ -330,6 +339,7 @@ class RentalFragment : Fragment() {
         "https://m.site.naver.com/1geQD"
     )
 >>>>>>> eb2bf45 ([희주] xml 최종 완료 및 로그인 구현, 오류 수정)
+
 
     private fun startQRScanner(buttonId: Int) {
         val integrator = IntentIntegrator.forSupportFragment(this)
@@ -415,6 +425,7 @@ class RentalFragment : Fragment() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -441,3 +452,9 @@ class RentalFragment : Fragment() {
 =======
 }
 >>>>>>> eb2bf45 ([희주] xml 최종 완료 및 로그인 구현, 오류 수정)
+=======
+    fun requestSharedPreferencesReset() {
+        (activity as? HomeActivity)?.resetSharedPreferences()
+    }
+}
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)

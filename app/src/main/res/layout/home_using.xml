@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <!--<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="match_parent"-->
@@ -22,9 +23,21 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools">
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 
-    <LinearLayout
+    <data>
+        <!-- 데이터 바인딩 클래스와 연결할 변수를 정의합니다. -->
+        <variable
+            name="binding"
+            type="com.example.charge_service.databinding.FragmentMapViewBinding" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp"
@@ -77,3 +90,59 @@
 
 </LinearLayout>
 <!--</androidx.drawerlayout.widget.DrawerLayout>-->
+=======
+        android:layout_height="match_parent"
+        android:id="@+id/home_layout" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".HomeUsingFragment"
+            android:background="@drawable/background"
+            android:scaleType="centerCrop"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30dp"
+                android:layout_marginBottom="100dp">
+
+                <TextView
+                    android:id="@+id/using_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="대여 시간은 2시간입니다."
+                    android:textSize="26dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/using_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="엄숙히 지켜주시기 바랍니다."
+                    android:textSize="26dp"
+                    android:layout_marginTop="7dp"/>
+
+                <fragment
+                    android:id="@+id/mapContainer"
+                    android:layout_width="match_parent"
+                    android:name="com.naver.maps.map.MapFragment"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="25dp" />
+                <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+
+                <TextView
+                    android:id="@+id/using_text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*충전기는 도서관 안에서만 사용 가능합니다"
+                    android:textSize="16dp"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)

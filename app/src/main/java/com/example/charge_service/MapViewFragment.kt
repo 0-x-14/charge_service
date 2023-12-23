@@ -8,12 +8,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+=======
+import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.HomeUsingBinding
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
+<<<<<<< HEAD
+=======
+import com.naver.maps.map.LocationTrackingMode
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap

@@ -2,11 +2,18 @@ package com.example.charge_service
 
 import android.os.Bundle
 import android.util.Log
+<<<<<<< HEAD
+=======
+import androidx.fragment.app.Fragment
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+<<<<<<< HEAD
 import androidx.fragment.app.Fragment
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 
 class HomeUsingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +27,11 @@ class HomeUsingFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.home_using, container, false)
 
+<<<<<<< HEAD
         val mapViewFragment = MapViewFragment1()
+=======
+        val mapViewFragment = MapViewFragment()
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 
         val mapContainer = rootView.findViewById<FrameLayout>(R.id.mapContainer)
         Log.d("jupy", "ㅜㅜ -1")

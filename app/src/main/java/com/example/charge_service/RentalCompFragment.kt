@@ -36,7 +36,7 @@ class RentalCompFragment : Fragment() {
         val rental_comp_close: ImageView = view.findViewById(R.id.rental_comp_close)
         rental_comp_close.setOnClickListener {
             val homeActivity = requireActivity() as HomeActivity
-            homeActivity.changeFragment(HomeFragment())
+            homeActivity.changeFragment(HomeUsingFragment())
         }
 
 
@@ -62,7 +62,6 @@ class RentalCompFragment : Fragment() {
 >>>>>>> ed8d295 ([주영] 타이머 구현 -3(재))
 =======
 >>>>>>> 2651ef1 ([주영] 타이머 구현 -3)
-
 
         var hour = 0
         var minute = 0

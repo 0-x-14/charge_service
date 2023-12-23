@@ -1,11 +1,15 @@
 package com.example.charge_service
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.content.Context
 =======
 import RentalFragment
 import android.content.Intent
 >>>>>>> d5c247d ([혜진] 부분 수정)
+=======
+import android.content.Intent
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 import android.os.Bundle
 <<<<<<< HEAD
 import android.util.AttributeSet
@@ -122,11 +126,14 @@ class HomeActivity: AppCompatActivity() {
 
         val open = findViewById<ImageView>(R.id.menu_btn)
 
+<<<<<<< HEAD
         val alarm = findViewById<ImageView>(R.id.alarm_btn)
         alarm.setOnClickListener{
             val intent = Intent(this, AlarmActivity::class.java)
             startActivity(intent)
         }
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
         open.setOnClickListener {
             val drawer = findViewById<DrawerLayout>(R.id.homeLayout)
             if (!drawer.isDrawerOpen(GravityCompat.END)) {
@@ -135,9 +142,12 @@ class HomeActivity: AppCompatActivity() {
         }
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 >>>>>>> 0fd952f ([주영] rental 화면전환 업데이트)
 =======
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
         val navigationView: NavigationView = findViewById(R.id.home_navigation)
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -151,7 +161,10 @@ class HomeActivity: AppCompatActivity() {
                 else -> false
             }
         }
+<<<<<<< HEAD
 >>>>>>> d5c247d ([혜진] 부분 수정)
+=======
+>>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
     }
     fun resetSharedPreferences() {
         val sharedPreferences = getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
@@ -186,13 +199,11 @@ class HomeActivity: AppCompatActivity() {
 >>>>>>> 975da55 (HomeActivity 수정)
                     }
                     R.id.navi_rental -> {
-                        // changeFragment(RentalCompFragment)
                         changeFragment(RentalConditionFragment)
                         // checkAndChangeFragment(RentalConditionFragment)
                         true
                     }
                     R.id.navi_return -> {
-                        // changeFragment(ReturnCompFragment)
                         changeFragment(ReturnFragment)
                         true
                     }
