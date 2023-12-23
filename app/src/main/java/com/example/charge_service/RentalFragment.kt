@@ -119,8 +119,11 @@
 //
 //}
 
+<<<<<<< HEAD
 package com.example.charge_service
 
+=======
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -161,7 +164,10 @@ class RentalFragment : Fragment() {
     private val channelName = "충전하겠숙?"
     private val description = "대여가 완료되었습니다. 2시간 뒤에 반납해주세요."
     private val importance = NotificationManager.IMPORTANCE_HIGH
+<<<<<<< HEAD
 
+=======
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -210,8 +216,14 @@ class RentalFragment : Fragment() {
 =======
 >>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
                 saveToSharedPreferences("numOfEightPin", textView1.text.toString())
+<<<<<<< HEAD
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
+=======
+                showNotification()
+            }
+            else {
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
                 Toast.makeText(requireContext(), "8핀 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
 =======
             else {
@@ -240,8 +252,14 @@ class RentalFragment : Fragment() {
 =======
 >>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
                 saveToSharedPreferences("numOfCtype", textView2.text.toString())
+<<<<<<< HEAD
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
+=======
+                showNotification()
+            }
+            else {
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
                 Toast.makeText(requireContext(), "C타입 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
 =======
             else {
@@ -264,6 +282,7 @@ class RentalFragment : Fragment() {
                 saveToSharedPreferences("numOfnote", textView3.text.toString())
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 showNotification()
             }
             else {
@@ -273,6 +292,11 @@ class RentalFragment : Fragment() {
 >>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
             } else {
 >>>>>>> d5c247d ([혜진] 부분 수정)
+=======
+                showNotification()
+            }
+            else {
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
                 Toast.makeText(requireContext(), "노트북 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
 =======
             if(textView3.text.toString().toInt() > 0)
@@ -284,6 +308,44 @@ class RentalFragment : Fragment() {
         }
         return view
 
+<<<<<<< HEAD
+=======
+    }
+    private fun showNotification() {
+        // 1. Notification Channel 생성 (API Level 26 이상)
+        createNotificationChannel()
+
+        // 2. Notification Builder 사용
+        val builder = NotificationCompat.Builder(requireContext(), NOTIFICATION_CHANNEL_ID)
+            .setSmallIcon(R.drawable.alarm_img)
+            .setContentTitle(channelName)
+            .setContentText(description)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+
+        // 3. Notification Manager로 Notification 표시
+        val notificationManager =
+            requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notificationManager.notify(1234, builder.build())
+    }
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                NOTIFICATION_CHANNEL_ID,
+                channelName,
+                importance
+            ).apply {
+                description = this@RentalFragment.description
+                enableLights(true)
+            }
+
+            val notificationManager =
+                requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            notificationManager.createNotificationChannel(channel)
+        }
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
     }
 <<<<<<< HEAD
     private fun showNotification() {
@@ -438,6 +500,7 @@ class RentalFragment : Fragment() {
     fun requestSharedPreferencesReset() {
         (activity as? HomeActivity)?.resetSharedPreferences()
     }
+<<<<<<< HEAD
 }
 >>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
 =======
@@ -458,3 +521,6 @@ class RentalFragment : Fragment() {
     }
 }
 >>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
+=======
+}
+>>>>>>> b9a2b64 (알림 부분 추가+ 오류 수정)
