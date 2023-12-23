@@ -18,3 +18,6 @@ class SplashActivity: AppCompatActivity(){
         // 2초동안 splash.xml이 보여진 뒤 메인 화면으로 이동함
     }
 }
+
+
+

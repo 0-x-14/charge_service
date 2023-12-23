@@ -27,7 +27,7 @@ import kotlin.concurrent.timer
         val rental_comp_close: ImageView = view.findViewById(R.id.rental_comp_close)
         rental_comp_close.setOnClickListener {
             val homeActivity = requireActivity() as HomeActivity
-            homeActivity.changeFragment(HomeFragment())
+            homeActivity.changeFragment(HomeUsingFragment())
         }
 
         initTimer(view)
@@ -38,7 +38,6 @@ import kotlin.concurrent.timer
     private fun initTimer(view: View) {
         val time: TextView = view.findViewById(R.id.timer)
         // concurrent에서 timer를 사용하기 위해 timer 호출시 time 변수 이용
-
 
         var hour = 0
         var minute = 0

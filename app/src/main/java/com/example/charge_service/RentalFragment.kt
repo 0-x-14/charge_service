@@ -17,8 +17,11 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class RentalFragment : Fragment() {
+private val initialAvailableCount1 = "3"
+private val initialAvailableCount2 = "3"
+private val initialAvailableCount3 = "3"
 
+class RentalFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var rentalButton1: Button
     private lateinit var rentalButton2: Button
@@ -42,10 +45,15 @@ class RentalFragment : Fragment() {
         textView2 = view.findViewById(R.id.numOfCtype)
         textView3 = view.findViewById(R.id.numOfnote)
 
+        textView1.text = getFromSharedPreferences("numOfEightPin", initialAvailableCount1)
+        textView2.text = getFromSharedPreferences("numOfCtype", initialAvailableCount2)
+        textView3.text = getFromSharedPreferences("numOfnote", initialAvailableCount3)
+
         rentalButton1.setOnClickListener {
             startQRScanner(1)
             if (textView1.text.toString().toInt() > 0) {
                 textView1.text = (textView1.text.toString().toInt() - 1).toString()
+                saveToSharedPreferences("numOfEightPin", textView1.text.toString())
             } else {
                 Toast.makeText(requireContext(), "8핀 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
@@ -55,6 +63,7 @@ class RentalFragment : Fragment() {
             startQRScanner(2)
             if (textView2.text.toString().toInt() > 0) {
                 textView2.text = (textView2.text.toString().toInt() - 1).toString()
+                saveToSharedPreferences("numOfCtype", textView2.text.toString())
             } else {
                 Toast.makeText(requireContext(), "C타입 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
@@ -64,19 +73,20 @@ class RentalFragment : Fragment() {
             startQRScanner(3)
             if (textView3.text.toString().toInt() > 0) {
                 textView3.text = (textView3.text.toString().toInt() - 1).toString()
+                saveToSharedPreferences("numOfnote", textView3.text.toString())
             } else {
                 Toast.makeText(requireContext(), "노트북 충전기가 모두 대여되었습니다.", Toast.LENGTH_LONG).show()
             }
         }
-
         return view
     }
+
 
     private fun startQRScanner(buttonId: Int) {
         val integrator = IntentIntegrator.forSupportFragment(this)
         integrator.setOrientationLocked(false)
         integrator.initiateScan()
-        integrator.setRequestCode(buttonId) // 각 버튼을 구분하기 위한 코드 설정
+        integrator.setRequestCode(buttonId)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -88,7 +98,6 @@ class RentalFragment : Fragment() {
                 if (result.contents == null) {
                     Toast.makeText(requireContext(), "취소됨", Toast.LENGTH_SHORT).show()
                 } else {
-                    // 각 버튼에 대응하는 처리
                     when (requestCode) {
                         1 -> {
                             Toast.makeText(
@@ -97,7 +106,6 @@ class RentalFragment : Fragment() {
                                 Toast.LENGTH_LONG
                             ).show()
                         }
-
                         2 -> {
                             Toast.makeText(
                                 requireContext(),
@@ -105,7 +113,6 @@ class RentalFragment : Fragment() {
                                 Toast.LENGTH_LONG
                             ).show()
                         }
-
                         3 -> {
                             Toast.makeText(
                                 requireContext(),
@@ -122,9 +129,23 @@ class RentalFragment : Fragment() {
         }
     }
 
+
+    private fun saveToSharedPreferences(key: String, value: String) {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString(key, value)
+        editor.apply()
+    }
+
+    private fun getFromSharedPreferences(key: String, defaultValue: String): String {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
+        val defaultValueAfterLogout = "3"
+        val storedValue = sharedPreferences.getString(key, defaultValueAfterLogout)
+        return storedValue ?: defaultValueAfterLogout
+    }
+
     private fun saveCurrentTimeToFirebase() {
-        val currentTime =
-            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
         val timeRef = database.getReference("rental_time").push()
         timeRef.setValue(currentTime)
             .addOnSuccessListener {
@@ -135,6 +156,7 @@ class RentalFragment : Fragment() {
                 Toast.makeText(requireContext(), "시간을 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
             }
     }
-
+    fun requestSharedPreferencesReset() {
+        (activity as? HomeActivity)?.resetSharedPreferences()
+    }
 }
-

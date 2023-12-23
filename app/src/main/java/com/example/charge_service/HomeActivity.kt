@@ -1,5 +1,6 @@
 package com.example.charge_service
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -52,6 +53,7 @@ class HomeActivity: AppCompatActivity() {
         }
 
         val open = findViewById<ImageView>(R.id.menu_btn)
+
         open.setOnClickListener {
             val drawer = findViewById<DrawerLayout>(R.id.homeLayout)
             if (!drawer.isDrawerOpen(GravityCompat.END)) {
@@ -59,7 +61,27 @@ class HomeActivity: AppCompatActivity() {
             }
         }
 
+        val navigationView: NavigationView = findViewById(R.id.home_navigation)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.logout -> {
+                    // 로그아웃 버튼을 클릭했을 때의 동작
+                    resetSharedPreferences()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
+    fun resetSharedPreferences() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     private fun setUpBottomNavigationBar() {
         bottomNavigationView = findViewById(R.id.Smenu)
         bottomNavigationView.run {
@@ -70,12 +92,10 @@ class HomeActivity: AppCompatActivity() {
                         true
                     }
                     R.id.navi_rental -> {
-                        // changeFragment(RentalCompFragment)
                         changeFragment(RentalConditionFragment)
                         true
                     }
                     R.id.navi_return -> {
-                        // changeFragment(ReturnCompFragment)
                         changeFragment(ReturnFragment)
                         true
                     }
