@@ -59,6 +59,7 @@ class HomeActivity: AppCompatActivity() {
         val open = findViewById<ImageView>(R.id.menu_btn)
 
         val alarm = findViewById<ImageView>(R.id.alarm_btn)
+
         alarm.setOnClickListener{
             val intent = Intent(this, AlarmActivity::class.java)
             startActivity(intent)
