@@ -27,7 +27,7 @@ class ReturnCompFragment : Fragment() {
 
         submission.setOnClickListener {
             val homeActivity = requireActivity() as HomeActivity
-            homeActivity.changeFragment(HomeFragment())
+            homeActivity.changeFragment(HomeUsingFragment())
         }
 
         val name = view.findViewById<TextView>(R.id.textView16)
