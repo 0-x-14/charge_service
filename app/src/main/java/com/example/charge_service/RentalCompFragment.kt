@@ -7,19 +7,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 <<<<<<< HEAD
+<<<<<<< HEAD
 import androidx.fragment.app.Fragment
 =======
+=======
+import androidx.fragment.app.Fragment
+>>>>>>> d5c247d ([혜진] 부분 수정)
 import java.util.Timer
 >>>>>>> 95d0ca7 ([주영] 로딩 화면 추가)
 import kotlin.concurrent.timer
 
 
- class RentalCompFragment : Fragment() {
+class RentalCompFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
-     private var timer: Timer? = null
+    private var timer: Timer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +39,14 @@ import kotlin.concurrent.timer
             homeActivity.changeFragment(HomeFragment())
         }
 
+
         initTimer(view)
+
+        val name = view.findViewById<TextView>(R.id.textView9)
+        val id = MainActivity.preferences.getString("id", "") ?: ""
+        if (name != null) {
+            name.setText("${id}님")
+        }
 
         return view
     }
@@ -99,11 +112,11 @@ import kotlin.concurrent.timer
         }
     }
 
-     override fun onDestroyView() {
-         super.onDestroyView()
+    override fun onDestroyView() {
+        super.onDestroyView()
 
-         // 프래그먼트가 뷰를 파괴할 때 타이머도 취소해야 함
-         timer?.cancel()
-         timer = null
-     }
+        // 프래그먼트가 뷰를 파괴할 때 타이머도 취소해야 함
+        timer?.cancel()
+        timer = null
+    }
 }

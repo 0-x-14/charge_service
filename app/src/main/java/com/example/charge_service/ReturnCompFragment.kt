@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 class ReturnCompFragment : Fragment() {
@@ -28,6 +29,13 @@ class ReturnCompFragment : Fragment() {
             val homeActivity = requireActivity() as HomeActivity
             homeActivity.changeFragment(HomeFragment())
         }
+
+        val name = view.findViewById<TextView>(R.id.textView16)
+        val id = MainActivity.preferences.getString("id", "") ?: ""
+        if (name != null) {
+            name.setText("${id}님")
+        }
+
         return view
     }
 }

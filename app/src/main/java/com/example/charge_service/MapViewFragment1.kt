@@ -20,7 +20,7 @@ import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.util.FusedLocationSource
 
-class MapViewFragment : Fragment(), OnMapReadyCallback {
+class MapViewFragment1 : Fragment(), OnMapReadyCallback {
     private val LOCATION_PERMISSION_REQUEST_CODE = 5000
     private lateinit var mapView: MapView
 

@@ -1,6 +1,11 @@
 package com.example.charge_service
 
+<<<<<<< HEAD
 import android.content.Context
+=======
+import RentalFragment
+import android.content.Intent
+>>>>>>> d5c247d ([혜진] 부분 수정)
 import android.os.Bundle
 <<<<<<< HEAD
 import android.util.AttributeSet
@@ -21,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.charge_service.MainActivity.Companion.preferences
 import com.example.charge_service.databinding.ActivityMainBinding
 =======
 import androidx.fragment.app.Fragment
@@ -64,6 +68,12 @@ class HomeActivity: AppCompatActivity() {
     private val ReturnFragment by lazy { ReturnFragment() }
     private val PayFragment by lazy { PayFragment() }
     private val RentalConditionFragment by lazy { RentalConditionFragment() }
+<<<<<<< HEAD
+=======
+    private val binding by lazy { HomeBinding.inflate(layoutInflater) }
+    private lateinit var preferences: PreferenceUtil
+    private var rentalFragment: RentalFragment? = null
+>>>>>>> d5c247d ([혜진] 부분 수정)
     //private vmeBinding.inflate(layoutInflater) }
 
     private val HomeUsingFragment by lazy { HomeUsingFragment() }
@@ -71,7 +81,16 @@ class HomeActivity: AppCompatActivity() {
     private val ReturnCompFragment by lazy { ReturnCompFragment() }
 >>>>>>> 975da55 (HomeActivity 수정)
     // 각각 대여/반납 완료 화면이 정상적으로 구현되었는지 확인할 때 사용하는 용도
+<<<<<<< HEAD
 >>>>>>> 96ae0fd ([주영] 지도 API 재시도 -1)
+=======
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    // HomeActivity onCreate 내부의 메뉴 아이템 찾기 예시
+
+
+>>>>>>> d5c247d ([혜진] 부분 수정)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // navigationViewHeader 초기화
@@ -102,16 +121,45 @@ class HomeActivity: AppCompatActivity() {
         }
 
         val open = findViewById<ImageView>(R.id.menu_btn)
+
+        val alarm = findViewById<ImageView>(R.id.alarm_btn)
+        alarm.setOnClickListener{
+            val intent = Intent(this, AlarmActivity::class.java)
+            startActivity(intent)
+        }
         open.setOnClickListener {
             val drawer = findViewById<DrawerLayout>(R.id.homeLayout)
             if (!drawer.isDrawerOpen(GravityCompat.END)) {
                 drawer.openDrawer(GravityCompat.END)
             }
         }
+<<<<<<< HEAD
 
 =======
 >>>>>>> 0fd952f ([주영] rental 화면전환 업데이트)
+=======
+        val navigationView: NavigationView = findViewById(R.id.home_navigation)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.logout -> {
+                    // 로그아웃 버튼을 클릭했을 때의 동작
+                    resetSharedPreferences()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+>>>>>>> d5c247d ([혜진] 부분 수정)
     }
+    fun resetSharedPreferences() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     private fun setUpBottomNavigationBar() {
         bottomNavigationView = findViewById(R.id.Smenu)
         bottomNavigationView.run {
