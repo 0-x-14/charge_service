@@ -114,33 +114,33 @@
             app:layout_constraintTop_toTopOf="@+id/textView2"
             tools:ignore="MissingConstraints" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/alarm"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:layout_marginStart="292dp"-->
-<!--            android:src="@drawable/alarm_img"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/menu_icon"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--             />-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/alarm"-->
+        <!--            android:layout_width="30dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:layout_marginEnd="10dp"-->
+        <!--            android:layout_marginStart="292dp"-->
+        <!--            android:src="@drawable/alarm_img"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/menu_icon"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--             />-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/menu_icon"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:layout_marginEnd="30dp"-->
-<!--            android:layout_marginStart="356dp"-->
-<!--            android:src="@drawable/menu_img"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--             />-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/menu_icon"-->
+        <!--            android:layout_width="30dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:layout_marginEnd="30dp"-->
+        <!--            android:layout_marginStart="356dp"-->
+        <!--            android:src="@drawable/menu_img"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--             />-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
 
         <TextView
             android:id="@+id/start_date"
@@ -182,15 +182,15 @@
             tools:ignore="MissingConstraints" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <com.google.android.material.navigation.NavigationView-->
-<!--            android:id="@+id/home_navigation"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="end"-->
-<!--            app:menu="@menu/menu_navigation"-->
-<!--            app:headerLayout="@layout/navigation_header"-->
-<!--            android:background="#96C9E5" />-->
+    <!--        <com.google.android.material.navigation.NavigationView-->
+    <!--            android:id="@+id/home_navigation"-->
+    <!--            android:layout_width="250dp"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="end"-->
+    <!--            app:menu="@menu/menu_navigation"-->
+    <!--            app:headerLayout="@layout/navigation_header"-->
+    <!--            android:background="#96C9E5" />-->
 
-<!--</androidx.drawerlayout.widget.DrawerLayout>-->
+    <!--</androidx.drawerlayout.widget.DrawerLayout>-->

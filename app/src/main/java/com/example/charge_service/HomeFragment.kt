@@ -29,20 +29,7 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
         val binding = HomeBinding.inflate(layoutInflater)
-
-//        val userName = binding.textView
-//        val id = preferences.getString("id", "")
-//        userName.text = "${id} 님 안녕하세요"
-
-//        binding.menuBtn.setOnClickListener{
-//            binding.homeLayout.openDrawer(GravityCompat.END)
-//        }
-//        binding.alarmBtn.setOnClickListener{
-//            //alarm fragment
-//        }
     }
 
     override fun onCreateView(

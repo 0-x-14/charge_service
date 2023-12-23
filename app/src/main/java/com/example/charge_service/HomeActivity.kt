@@ -96,16 +96,14 @@ class HomeActivity: AppCompatActivity() {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.navi_home ->
-                    { changeFragment(HomeFragment)
+                    { changeFragment(HomeUsingFragment)
                         true
                     }
                     R.id.navi_rental -> {
-                        // changeFragment(RentalCompFragment)
                         changeFragment(RentalConditionFragment)
                         true
                     }
                     R.id.navi_return -> {
-                        // changeFragment(ReturnCompFragment)
                         changeFragment(ReturnFragment)
                         true
                     }

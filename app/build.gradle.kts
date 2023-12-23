@@ -43,6 +43,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -55,8 +56,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.gms:play-services-maps:17.0.0")
-    implementation("com.google.android.gms:play-services-location:17.0.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.0")
+    implementation("com.google.android.gms:play-services-location:18.0.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("androidx.navigation:navigation-runtime-ktx:2.7.5")
@@ -67,9 +68,10 @@ dependencies {
     //firebase 추가코드
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("androidx.appcompat:appcompat:1.3.1")
     implementation("com.naver.maps:map-sdk:3.17.0")
     implementation("com.google.android.gms:play-services-location:16.0.0")
+
 
 }
