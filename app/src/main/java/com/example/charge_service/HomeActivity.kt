@@ -31,12 +31,15 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.ActivityMainBinding
+<<<<<<< HEAD
 =======
 import androidx.fragment.app.Fragment
 >>>>>>> 36e671c (QR 스캔 처리 갯수 업데이트 되는거까지 구현 완료)
 import com.example.charge_service.databinding.HomeBinding
 import com.example.charge_service.databinding.MainHeaderBinding
 import com.example.charge_service.databinding.NavigationHeaderBinding
+=======
+>>>>>>> c32cf80 ([주영] 일부 파일 정리)
 import com.google.android.material.bottomnavigation.BottomNavigationView
 <<<<<<< HEAD
 import com.google.android.material.navigation.NavigationView
@@ -52,6 +55,7 @@ import com.google.firebase.database.ValueEventListener
 
 class HomeActivity: AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
+<<<<<<< HEAD
     private val HomeFragment by lazy { HomeFragment() }
 <<<<<<< HEAD
     private val ReturnFragment by lazy {ReturnFragment()}
@@ -88,6 +92,14 @@ class HomeActivity: AppCompatActivity() {
 <<<<<<< HEAD
 >>>>>>> 96ae0fd ([주영] 지도 API 재시도 -1)
 =======
+=======
+    private val ReturnFragment by lazy { ReturnFragment() }
+    private val PayFragment by lazy { PayFragment() }
+    private val RentalConditionFragment by lazy { RentalConditionFragment() }
+    private lateinit var preferences: PreferenceUtil
+
+    private val HomeUsingFragment by lazy { HomeUsingFragment() }
+>>>>>>> c32cf80 ([주영] 일부 파일 정리)
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView

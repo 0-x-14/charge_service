@@ -34,9 +34,7 @@ class HomeUsingFragment : Fragment() {
 >>>>>>> f08d0de ([주영] 지도 및 대여, 로그아웃 수정)
 
         val mapContainer = rootView.findViewById<FrameLayout>(R.id.mapContainer)
-        Log.d("jupy", "ㅜㅜ -1")
         if (mapContainer != null) {
-            Log.d("jupy", "mapContainer is $mapContainer")
             if (savedInstanceState == null) {
                 childFragmentManager.beginTransaction()
                     .replace(mapContainer.id, mapViewFragment)
@@ -50,17 +48,6 @@ class HomeUsingFragment : Fragment() {
         } else {
             Log.e("jupy", "mapContainer is null")
         }
-        // 클래스 멤버로 선언
-//        val mapViewFragment = MapViewFragment()
-//
-//// onCreateView 메서드에서 사용
-//        val mapContainer = rootView.findViewById<FrameLayout>(R.id.mapContainer)
-//        val existingFragment = childFragmentManager.findFragmentById(mapContainer.id)
-//        if (existingFragment == null) {
-//            childFragmentManager.beginTransaction()
-//                .replace(mapContainer.id, mapViewFragment)
-//                .commit()
-//        }
 
         return rootView
     }
@@ -72,10 +59,4 @@ class HomeUsingFragment : Fragment() {
         outState.putDouble("latitude", 37.5455 )
         outState.putDouble("longitude", 126.9648)
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment?
-//        mapFragment?.getMapAsync(this)
-//    }
 }
