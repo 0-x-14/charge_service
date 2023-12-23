@@ -1,5 +1,7 @@
 package com.example.charge_service
 
+import RentalFragment
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.charge_service.MainActivity.Companion.preferences
 import com.example.charge_service.databinding.ActivityMainBinding
 import com.example.charge_service.databinding.HomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +22,7 @@ class HomeActivity: AppCompatActivity() {
     private val RentalConditionFragment by lazy { RentalConditionFragment() }
     private val binding by lazy { HomeBinding.inflate(layoutInflater) }
     private lateinit var preferences: PreferenceUtil
+    private var rentalFragment: RentalFragment? = null
     //private vmeBinding.inflate(layoutInflater) }
 
     private val HomeUsingFragment by lazy { HomeUsingFragment() }
@@ -30,6 +32,9 @@ class HomeActivity: AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+    // HomeActivity onCreate 내부의 메뉴 아이템 찾기 예시
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // navigationViewHeader 초기화
@@ -52,14 +57,39 @@ class HomeActivity: AppCompatActivity() {
         }
 
         val open = findViewById<ImageView>(R.id.menu_btn)
+
+        val alarm = findViewById<ImageView>(R.id.alarm_btn)
+        alarm.setOnClickListener{
+            val intent = Intent(this, AlarmActivity::class.java)
+            startActivity(intent)
+        }
         open.setOnClickListener {
             val drawer = findViewById<DrawerLayout>(R.id.homeLayout)
             if (!drawer.isDrawerOpen(GravityCompat.END)) {
                 drawer.openDrawer(GravityCompat.END)
             }
         }
-
+        val navigationView: NavigationView = findViewById(R.id.home_navigation)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.logout -> {
+                    // 로그아웃 버튼을 클릭했을 때의 동작
+                    resetSharedPreferences()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
+    fun resetSharedPreferences() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     private fun setUpBottomNavigationBar() {
         bottomNavigationView = findViewById(R.id.Smenu)
         bottomNavigationView.run {

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menu_navi">
 
+
     <item
         android:id="@+id/alarm_setting"
         android:title="알림 설정"

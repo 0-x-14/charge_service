@@ -1,11 +1,10 @@
 package com.example.charge_service
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.example.charge_service.databinding.PayBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,7 +48,7 @@ class PayFragment : Fragment() {
 //        }
         return inflater.inflate(R.layout.pay, container, false)
     }
-
+    
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -69,4 +68,5 @@ class PayFragment : Fragment() {
                 }
             }
     }
+
 }

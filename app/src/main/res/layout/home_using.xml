@@ -25,7 +25,7 @@
             android:id="@+id/using_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="X타입 대여 중"
+            android:text="대여시간은 2시간입니다. "
             android:textSize="26dp"
             android:layout_marginTop="10dp"/>
 
@@ -33,16 +33,18 @@
             android:id="@+id/using_text_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="현재 X시간 X분 남았습니다."
+            android:text="엄숙히 지켜주시기 바랍니다."
             android:textSize="26dp"
             android:layout_marginTop="7dp"/>
 
-        <fragment
-            android:id="@+id/mapView"
+        <com.naver.maps.map.MapView
+            android:id="@+id/mapContainer"
             android:layout_width="match_parent"
-            android:name="com.naver.maps.map.MapFragment"
             android:layout_height="250dp"
-            android:layout_marginTop="25dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
 
         <TextView

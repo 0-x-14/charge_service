@@ -73,20 +73,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/numOfEightPin"
-            android:layout_width="45dp"
-            android:layout_height="37dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="7dp"
-            android:gravity="center"
-            android:text="3"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/eightpin_toggle"
+            <TextView
+                android:id="@+id/numOfEightPin"
+                android:layout_width="45dp"
+                android:layout_height="37dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="7dp"
+                android:gravity="center"
+                android:text="3"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/eightpin_toggle"
 
                 app:layout_constraintTop_toTopOf="parent" />
 
